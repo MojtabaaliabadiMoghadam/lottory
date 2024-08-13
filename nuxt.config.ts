@@ -18,7 +18,12 @@ export default defineNuxtConfig({
         {name: 'viewport', content: 'width=device-width, initial-scale=1'}
       ],
       script: [],
-      link: [],
+      link: [
+        { 
+          rel: 'stylesheet', 
+          href: 'https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;700&display=swap' 
+        }
+      ],
       style: [],
       noscript: []
     },
