@@ -1,5 +1,5 @@
 <template>
-  <div dir="rtl" class="flex border-r-8 gap-3 px-6 py-5 bg-white items-center justify-between border border-green-700 rounded-2xl">
+  <div  class="flex border-r-8 gap-3 px-6 py-5 bg-white items-center justify-between border border-green-700 rounded-2xl">
     <span class="text-black font-bold text-[22px] px-1">
       {{props.data_notification.title}}
     </span>

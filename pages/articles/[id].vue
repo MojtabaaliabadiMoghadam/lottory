@@ -1,7 +1,7 @@
 <template>
   <ArticleLayout :data_side_bar="data_in_side_bar">
     <template #content>
-      <div dir="rtl" class="my-10 flex flex-col gap-5  justify-center">
+      <div class="my-10 flex flex-col gap-5  justify-center">
         <div>
           <img class="rounded-xl" src="@/assets/images/full-image-1.jpg">
         </div>

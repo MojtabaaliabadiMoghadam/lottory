@@ -1,5 +1,5 @@
 <template>
-  <div dir="rtl" class="flex gap-4 flex-col items-center cursor-pointer ">
+  <div class="flex gap-4 flex-col items-center cursor-pointer ">
     <div class="h-[205px] w-[205px] hover-class hover-class">
       <img class="rounded-xl hover:rounded-xl hover:border-2 hover:border-green-700" :src="computed_show_image">
     </div>

@@ -4,7 +4,7 @@
       <div class="flex w-full">
         <div  class="hidden md:block w-1/3 border-e-2">
           <div class="flex flex-col gap-20 mt-20 mx-10">
-            <div dir="rtl" class="flex gap-2">
+            <div class="flex gap-2">
               <input class="rounded-xl bg-[#f8f8f8] border border-[#ebebeb] text-black font-medium" placeholder="عبارت مورد نظر..." type="text">
               <button class="rounded-xl hover:bg-gray-300 border border-[#ebebeb] bg-[#f8f8f8] p-3"> جستجو</button>
             </div>
@@ -14,7 +14,7 @@
                   ارتباط با کارت سبز
                 </span>
               </div>
-              <div v-for="data in data_side_bar" dir="rtl">
+              <div v-for="data in data_side_bar" >
                 <div class="flex flex-col gap-2 text-[16px]">
                   <span class="font-medium">{{data.question}}</span>
                   <span>{{data.answer}}</span>
