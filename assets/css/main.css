@@ -3,7 +3,7 @@
 @tailwind utilities;
 @font-face {
     font-family: 'vazir';
-    src: url('~assets/fonts/Vazirmatn-Medium.ttf') format('truetype'),
+    src: url('/assets/fonts/Vazirmatn-Medium.ttf') format('truetype'),
     url('../fonts/Vazirmatn-Medium.woff2') format('truetype');
 }
 
