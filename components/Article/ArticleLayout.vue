@@ -2,7 +2,7 @@
   <div class="">
     <div class="mx-auto md:max-w-7xl">
       <div class="flex w-full">
-        <div class="md:w-3/4 flex flex-col items-center md:items-start">
+        <div class="xl:w-3/4 flex flex-col items-center md:items-start">
           <slot name="content"/>
         </div>
         <div  class="hidden xl:block w-1/3 border-s-2">

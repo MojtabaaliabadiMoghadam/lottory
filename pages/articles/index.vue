@@ -1,7 +1,7 @@
 <template>
   <ArticleLayout :data_side_bar="data_in_side_bar">
     <template #content>
-      <div class="flex flex-col items-start my-6 gap-2 px-5 md:px-0">
+      <div class="flex flex-col items-start my-6 gap-2 px-5 ">
             <span class="font-bold text-[20px]">
               مجله مهاجرتی کارت سبز
             </span>
@@ -9,11 +9,12 @@
               معرفی انواع ویزا، معرفی ایالت ها و مطالب خواندنی مهاجرتی در کارت سبز
             </span>
       </div>
-      <div class="flex flex-col md:flex-row md:flex-wrap md:w-[816px] justify-center gap-10 md:gap-20">
-        <template v-for="(data,key) in data_card_box" :key="key">
-          <CardBoxArticle @click="goToArticle(data.id)"  :image_name="data.image" :title="data.title" :date_added="data.date"/>
-        </template>
+      <div class="grid grid-cols-12 gap-x-4 gap-y-10 w-full px-4">
+        <div class="2xl:col-span-3 lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12" v-for="(data,key) in data_card_box" :key="key">
+          <CardBoxArticle @click="goToArticle(data.id)"  :image="data.image" :title="data.title" :date_added="extractDate(data.created_at)"/>
+        </div>
       </div>
+      <ui-kit-pagination :total="dataPagination?.total" :current="dataPagination?.current_page" @update="updateRequestFromPagination"/>
     </template>
   </ArticleLayout>
 </template>
@@ -22,20 +23,23 @@ import ArticleLayout from "~/components/Article/ArticleLayout.vue";
 import CardBoxArticle from "~/components/Article/CardBoxArticle.vue";
 import {useApi} from "~/composables/useFetch";
 const { get } = useApi();
-const data_card_box = ref()
-const error = ref()
 const router = useRouter()
-// const data_card_box = [
-//   {id:1,image:'image_1',title:'کشور عمان',date:'1403-03-03'},
-//   {id:2,image:'image_2',title:'وقت بیومتریک و انگشت نگاری ویزاهای کانادا',date:'1403-03-03'},
-//   {id:3,image:'image_3',title:'ویزای عمان',date:'1403-03-03'},
-//   {id:4,image:'image_4',title:'نحوه گرفتن گواهینامه رانندگی در امارات',date:'1403-03-03'},
-//   {id:5,image:'image_5',title:'تحصیل پزشکی در امریکا و کانادا',date:'1403-03-03'},
-//   {id:6,image:'image_6',title:'امور برندگان لاتاری تا دریافت ویزا',date:'1403-03-03'},
-//   {id:7,image:'image_3',title:'ویزای عمان',date:'1403-03-03'},
-//   {id:8,image:'image_4',title:'نحوه گرفتن گواهینامه رانندگی در امارات',date:'1403-03-03'},
-//   {id:9,image:'image_5',title:'تحصیل پزشکی در امریکا و کانادا',date:'1403-03-03'},
-// ]
+
+const data_card_box = ref<any>()
+const error = ref()
+const dataPagination = ref<any>()
+const dataCurrentPage = ref<number>(1)
+const perPageData = ref<number>(12)
+
+function extractDate(dateTimeString:string) {
+  const date = new Date(dateTimeString);
+  // Extract the date part in YYYY-MM-DD format
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are zero-based
+  const day = String(date.getUTCDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}
 const data_in_side_bar = [
   {question:'تلفن ثابت:',answer:'021-49374'},
   {question:'تلگرام و واتس اپ:',answer:'021-49374'},
@@ -46,17 +50,17 @@ const data_in_side_bar = [
 function goToArticle(id:number){
   router.push({path:`articles/${id}`})
 }
-const fetchData = async () => {
-  try {
-    const {status,data,errors} = await get('/blog');
+async function fetchData (){
+    const {status,data,errors} = await get('/blog',{per_page:perPageData.value,page:dataCurrentPage.value});
     if(status == 200){
       data_card_box.value = data.blogs
-      console.log(data_card_box.value,'data_card_box.value')
+      dataPagination.value = data.pagination
     }
-  } catch (err: any) {
-    error.value = err.message;
-  }
-};
+}
+async function updateRequestFromPagination(currentInput:number){
+  dataCurrentPage.value = currentInput
+  await fetchData()
+}
 onMounted(async ()=>{
   await fetchData()
 })
