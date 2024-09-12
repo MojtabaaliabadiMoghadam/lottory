@@ -1,12 +1,12 @@
 <template>
-  <div class="relative">
-    <nav class="bg-[#003e25] text-white flex items-center gap-10 md:justify-center justify-between md:px-0 px-6">
+  <div class="sticky top-0 z-50">
+    <nav class="bg-[#003e25] text-white flex items-center gap-10 xl:justify-center justify-between xl:px-0 px-6">
       <div class="flex items-center md:max-w-7xl">
         <span @click="ChangeStatusShowMenu"
               :class="[!showMenu ? 'mdi-menu' : 'mdi-close']"
-              class=" md:hidden mdi mdi-36px" />
+              class=" xl:hidden mdi mdi-36px" />
         <div class="items-center justify-between w-full flex">
-          <ul class="md:bg-[#003e25] gap-3 hidden font-medium md:flex mt-0 space-x-6">
+          <ul class="md:bg-[#003e25] gap-3 hidden font-medium xl:flex mt-0 space-x-6">
             <li v-for="(header,index) in items_headers" :key="index">
               <NuxtLink :to="header.path"
                         @click="ChangeStatusShowMenu"
@@ -25,7 +25,7 @@
       </div>
     </nav>
     <Transition>
-      <ul v-if="showMenu" class="md:hidden bg-green-900/[0.9] w-full flex-col gap-3 flex font-medium absolute mt-0 space-x-6">
+      <ul v-if="showMenu" class="xl:hidden bg-green-900/[0.9] w-full flex-col gap-3 flex font-medium absolute mt-0 space-x-6">
         <li v-for="(header,index) in items_headers" :key="index" class="w-full">
           <NuxtLink :to="header.path"
                     @click="ChangeStatusShowMenu"

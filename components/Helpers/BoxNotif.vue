@@ -3,7 +3,7 @@
     <span class="text-black font-bold text-[22px] px-1">
       {{props.data_notification.title}}
     </span>
-    <button class="font-bold bg-green-500 text-nowrap rounded-2xl px-5 h-[57px] text-white text-center hover:bg-[#398439]">n
+    <button class="font-bold bg-green-500 text-nowrap rounded-2xl px-5 h-[57px] text-white text-center hover:bg-[#398439]">
       {{props.data_notification.button_text}}
     </button>
   </div>

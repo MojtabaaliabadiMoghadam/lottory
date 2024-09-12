@@ -1,9 +1,9 @@
 <template>
     <div class="bg-[#efefef] px-6 md:px-0 py-10">
       <div class="mx-auto md:max-w-5xl">
-        <div class="flex flex-col gap-5 items-end mb-10">
+        <div class="flex flex-col gap-5 items-start mb-10">
                   <span class="font-bold text-[28px] text-[#038831]">سوالات متداول لاتاری گرین کارت آمریکا</span>
-                  <span class="text-[20px] text-end flex flex-col gap-5">
+                  <span class="text-[20px] text-start flex flex-col gap-5">
                     <span class="font-light">
                       از آنجاییکه هر مرحله از لاتاری گرین کارت امریکا (از ثبت نام لاتاری گرفته تا انجام امور برندگان لاتاری) از حساسیت بالایی برخوردار است، افراد معمولا با سوالات بسیاری در زمینه لاتاری مواجه خواهند شد، لذا در این بخش از سایت
                     <span class="text-[#038831] font-bold cursor-pointer">کارت سبز</span>
@@ -21,7 +21,7 @@
           <button
               :id="'questions-title-' + (index + 1)"
               type="button"
-              class="p-2 font-light w-full bg-white flex items-center justify-end gap-2 cursor-pointer"
+              class="p-2 rounded-xl font-light w-full bg-white flex items-center justify-end gap-2 cursor-pointer"
               @click="toggleAccordion(index)"
               :aria-expanded="question.expanded"
               :aria-controls="'questions-text-' + (index + 1)"
@@ -41,7 +41,7 @@
               :id="'questions-text-' + (index + 1)"
               role="region"
               :aria-labelledby="'questions-title-' + (index + 1)"
-              class="text-right grid bg-[#f8f8f8] text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out "
+              class="text-right grid bg-[#f8f8f8] text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out rounded-xl"
               :class="question.expanded ? 'mb-3 grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'"
           >
             <div class="overflow-hidden">
