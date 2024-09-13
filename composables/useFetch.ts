@@ -58,14 +58,13 @@ export function useApi() {
         request<T>({ path, method: 'DELETE', headers });
 
 
-    /**
-     * Function to get the full URL for an image.
-     * @param {string} relativePath - The relative path of the image from the backend.
-     * @returns {string} - The full URL of the image.
-     */
-    const getImageUrl = (relativePath: string): string => {
-        return `${BASE_URL}${relativePath}`;
-    };
+
+    function getImageUrl(imageUrl: string): string {
+        const BASE_URL = 'https://ayandesabz.ir';
+        const cleanedImageUrl = imageUrl.replace(/^\/+/, '');
+        const fullUrl = `${BASE_URL}/${cleanedImageUrl}`;
+        return fullUrl;
+    }
     return {
         get,
         post,

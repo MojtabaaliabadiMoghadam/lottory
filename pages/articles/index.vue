@@ -11,7 +11,7 @@
       </div>
       <div class="grid grid-cols-12 gap-x-4 gap-y-10 w-full px-4">
         <div class="2xl:col-span-3 lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12" v-for="(data,key) in data_card_box" :key="key">
-          <CardBoxArticle @click="goToArticle(data.id)"  :image="data.image" :title="data.title" :date_added="extractDate(data.created_at)"/>
+          <CardBoxArticle @click="goToArticle(data.id)"  :image="data.images[0]?.url" :title="data.title" :date_added="extractDate(data.created_at)"/>
         </div>
       </div>
       <ui-kit-pagination :total="dataPagination?.total" :current="dataPagination?.current_page" @update="updateRequestFromPagination"/>
