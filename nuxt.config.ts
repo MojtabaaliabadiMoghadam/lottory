@@ -1,10 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: true,
   devtools: { enabled: true },
   css: [
       '~/assets/css/main.css',
     '@mdi/font/css/materialdesignicons.min.css'
   ],
+  runtimeConfig: {
+    public: {
+      BACK_END_URL: process.env.BACK_END_URL,
+      TABLES_PER_PAGE: process.env.TABLES_PER_PAGE
+    },
+  },
   postcss: {
     plugins: {
       tailwindcss: {},

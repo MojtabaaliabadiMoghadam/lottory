@@ -7,7 +7,7 @@
             </span>
         <span class="text-[16px] font-light">
               معرفی انواع ویزا، معرفی ایالت ها و مطالب خواندنی مهاجرتی در کارت سبز
-            </span>
+        </span>
       </div>
       <div class="grid grid-cols-12 gap-x-4 gap-y-10 w-full px-4">
         <div class="2xl:col-span-3 lg:col-span-4 md:col-span-6 sm:col-span-12 col-span-12" v-for="(data,key) in data_card_box" :key="key">
@@ -22,18 +22,18 @@
 import ArticleLayout from "~/components/Article/ArticleLayout.vue";
 import CardBoxArticle from "~/components/Article/CardBoxArticle.vue";
 import {useApi} from "~/composables/useFetch";
+import {useHelpers} from "~/composables/useHelpers";
+const {getUrl,fetchData,showErrorToast} = useHelpers()
 const { get } = useApi();
 const router = useRouter()
 
 const data_card_box = ref<any>()
 const error = ref()
 const dataPagination = ref<any>()
-const dataCurrentPage = ref<number>(1)
 const perPageData = ref<number>(12)
 
 function extractDate(dateTimeString:string) {
   const date = new Date(dateTimeString);
-  // Extract the date part in YYYY-MM-DD format
   const year = date.getUTCFullYear();
   const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are zero-based
   const day = String(date.getUTCDate()).padStart(2, '0');
@@ -50,19 +50,29 @@ const data_in_side_bar = [
 function goToArticle(id:number){
   router.push({path:`articles/${id}`})
 }
-async function fetchData (){
-    const {status,data,errors} = await get('/blog',{per_page:perPageData.value,page:dataCurrentPage.value});
-    if(status == 200){
-      data_card_box.value = data.blogs
-      dataPagination.value = data.pagination
+async function getData (page?:any){
+  let url = getUrl('/blog')
+  const {status,data,message} = await fetchData({
+    url:url,
+    method:'GET',
+    parameters:{
+      per_page: perPageData.value,
+      page: page ? page : 1
     }
+  })
+  if (status == 200){
+    data_card_box.value = data.blogs
+    dataPagination.value = data.pagination
+  }else{
+    showErrorToast(message)
+  }
+  console.log(data,'data')
 }
-async function updateRequestFromPagination(currentInput:number){
-  dataCurrentPage.value = currentInput
-  await fetchData()
+async function updateRequestFromPagination(currentInput){
+  await getData(currentInput)
 }
 onMounted(async ()=>{
-  await fetchData()
+  await getData()
 })
 </script>
 <style>
