@@ -23,7 +23,7 @@ import ArticleLayout from "~/components/Article/ArticleLayout.vue";
 import CardBoxArticle from "~/components/Article/CardBoxArticle.vue";
 import {useApi} from "~/composables/useFetch";
 import {useHelpers} from "~/composables/useHelpers";
-const {getUrl,fetchData,showErrorToast} = useHelpers()
+const {getUrl,fetchData,showErrorToast,extractDate} = useHelpers()
 const { get } = useApi();
 const router = useRouter()
 
@@ -32,14 +32,6 @@ const error = ref()
 const dataPagination = ref<any>()
 const perPageData = ref<number>(12)
 
-function extractDate(dateTimeString:string) {
-  const date = new Date(dateTimeString);
-  const year = date.getUTCFullYear();
-  const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are zero-based
-  const day = String(date.getUTCDate()).padStart(2, '0');
-
-  return `${year}-${month}-${day}`;
-}
 const data_in_side_bar = [
   {question:'تلفن ثابت:',answer:'021-49374'},
   {question:'تلگرام و واتس اپ:',answer:'021-49374'},
