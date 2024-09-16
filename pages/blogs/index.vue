@@ -40,25 +40,26 @@ const data_in_side_bar = [
   {question:'ساعت کاری:',answer:'همه روزه از 9 صبح الی 17 (پنجشنبه ها تا 13، بجز تعطیلات رسمی)'},
 ]
 function goToArticle(id:number){
-  router.push({path:`articles/${id}`})
+  router.push({path:`blogs/${id}`})
 }
 async function getData (page?:any){
   let url = getUrl('/blog')
-  const {status,data,message} = await fetchData({
-    url:url,
-    method:'GET',
-    parameters:{
-      per_page: perPageData.value,
-      page: page ? page : 1
+  try {
+    const {status,data,message} = await fetchData({
+      url:url,
+      method:'GET',
+      parameters:{
+        per_page: perPageData.value,
+        page: page ? page : 1
+      }
+    })
+    if (status == 200){
+      data_card_box.value = data.blogs
+      dataPagination.value = data.pagination
     }
-  })
-  if (status == 200){
-    data_card_box.value = data.blogs
-    dataPagination.value = data.pagination
-  }else{
-    showErrorToast(message)
+  }catch (err:any){
+    showErrorToast(err)
   }
-  console.log(data,'data')
 }
 async function updateRequestFromPagination(currentInput){
   await getData(currentInput)

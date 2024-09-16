@@ -1,10 +1,9 @@
+import type {AxiosResponse} from 'axios';
 import axios from 'axios';
 // axios.defaults.withCredentials = true;
+import {toast} from 'vue3-toastify'
 
-import { toast } from 'vue3-toastify'
 axios.defaults.withCredentials = true;  // اصلاح با withCredentials
-import type { AxiosResponse } from 'axios';
-import type { SweetAlertIcon } from 'sweetalert2';
 
 interface IResponse {
     status: number;
@@ -124,9 +123,9 @@ export function useHelpers() {
             normalizedUrl += `#${hash_data}`;
         }
 
-        if (baseUrl.endsWith('/') && normalizedUrl.startsWith('/')) {
+        if (baseUrl?.endsWith('/') && normalizedUrl.startsWith('/')) {
             normalizedUrl = normalizedUrl.slice(1);
-        } else if (!baseUrl.endsWith('/') && !normalizedUrl.startsWith('/')) {
+        } else if (!baseUrl?.endsWith('/') && !normalizedUrl.startsWith('/')) {
             normalizedUrl = `/${normalizedUrl}`;
         }
 
@@ -135,8 +134,7 @@ export function useHelpers() {
 
     function addBackendToImageUrl(imageUrl: string): string {
         const cleanedImageUrl = imageUrl.replace(/^\/+/, '');
-        const fullUrl = `${backEndUrl}/${cleanedImageUrl}`;
-        return fullUrl;
+        return `${backEndUrl}/${cleanedImageUrl}`;
     }
 
 
@@ -156,7 +154,7 @@ export function useHelpers() {
             headers = {},
             parameters = null,
         }: FetchDataOptions
-    ): Promise<IResponse> {
+    ) {
 
         url = url.replace(/^\/|\/$/g, '');
         headers = {
