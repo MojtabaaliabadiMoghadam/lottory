@@ -4,8 +4,8 @@
     <div class="">
       <img class="rounded-xl" :src="checkWitchImageShouldShow(props.image)">
     </div>
-    <div class="font-bold text-center text-green-600 flex items-start justify-center h-full w-[200px]">
-      <span class="text-wrap hover:text-green-600">
+    <div class="font-bold text-center text-green-600 flex items-start justify-center h-full w-[180px]">
+      <span class="line-clamp-3 hover:text-green-600">
         {{props.title}}
       </span>
     </div>

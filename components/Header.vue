@@ -1,6 +1,6 @@
 <template>
   <div class="sticky top-0 z-50">
-    <nav class="bg-[#003e25] text-white flex items-center gap-10 xl:justify-center justify-between xl:px-0 px-6">
+    <nav class="bg-[#003e25] text-white flex items-center gap-10 xl:justify-center justify-between xl:px-0 px-4">
       <div class="flex items-center md:max-w-7xl">
         <span @click="ChangeStatusShowMenu"
               :class="[!showMenu ? 'mdi-menu' : 'mdi-close']"
@@ -11,7 +11,7 @@
               <NuxtLink :to="header.path"
                         @click="ChangeStatusShowMenu"
                         :class="{'bg-gray-400' : route.path === header.path}"
-                        class="font-bold py-2 px-3 text-white hover:bg-green-200 hover:text-green-800
+                        class="font-bold py-2 px-3 text-white transition-all ease-in duration-200 hover:bg-green-200 hover:text-green-800
                         border-0 p-0 h-[64px] min-w-[70px] flex justify-center items-center">
                 {{ header.title }}
               </NuxtLink>
@@ -19,10 +19,10 @@
           </ul>
         </div>
       </div>
-      <div class="flex gap-2 cursor-pointer hover:text-green-400">
-        <span class="mdi mdi-login mdi-36px"></span>
-        <span class="self-center text-[16px] font-semibold whitespace-nowrap dark:text-white">ورود</span>
-      </div>
+<!--      <div class="flex gap-2 cursor-pointer hover:text-green-400">-->
+<!--        <span class="mdi mdi-login mdi-36px"></span>-->
+<!--        <span class="self-center text-[16px] font-semibold whitespace-nowrap dark:text-white">ورود</span>-->
+<!--      </div>-->
     </nav>
     <Transition>
       <ul v-if="showMenu" class="xl:hidden bg-green-900/[0.9] w-full flex-col gap-3 flex font-medium absolute mt-0 space-x-6">
@@ -30,7 +30,7 @@
           <NuxtLink :to="header.path"
                     @click="ChangeStatusShowMenu"
                     :class="{'bg-gray-400' : route.path === header.path}"
-                    class="font-bold py-2 px-3 text-white hover:bg-green-200 hover:text-green-800
+                    class="font-bold py-2 px-3 text-white  active:bg-green-200 active:text-green-800
                           border-0  min-w-[70px] flex justify-center items-center">
             {{ header.title }}
           </NuxtLink>
@@ -42,13 +42,13 @@
 <script setup lang="ts">
 const route = useRoute()
 const items_headers = reactive([
-  {path:'/' , title: 'کارت سبز'},
-  {path:'/blogs' , title: 'مقالات'},
+  {path:'/' , title: 'اصلی'},
+  {path:'/articles' , title: 'مقالات'},
   {path:'' , title: 'نتایج لاتاری'},
-  {path:'' , title: 'مشاوره برندگان'},
-  {path:'' , title: 'مشاوره مهاجرت'},
-  {path:'' , title: 'رضایت مشتری'},
-  {path:'' , title: 'مجوزها'},
+  // {path:'' , title: 'مشاوره برندگان'},
+  // {path:'' , title: 'مشاوره مهاجرت'},
+  // {path:'' , title: 'رضایت مشتری'},
+  // {path:'' , title: 'مجوزها'},
   {path:'' , title: 'درباره ما'},
   {path:'' , title: 'تماس با ما'},
 ])

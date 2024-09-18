@@ -14,7 +14,7 @@
             <div class="flex flex-col gap-7">
               <div class=" bg-[#cccccc] rounded-xl p-3">
                 <span class="text-[#a50933] font-medium text-[20px]">
-                  ارتباط با کارت سبز
+                  ارتباط با آینده سبز
                 </span>
               </div>
               <div v-for="data in props.data_side_bar" >
