@@ -114,7 +114,8 @@ export function useHelpers() {
     }
 
     function getUrl(url: string, api: boolean = true, hash_data: string | null = null): string {
-        const baseUrl = backEndUrl;
+        // const baseUrl = backEndUrl;
+        const baseUrl = 'https://ayandesabz.ir/';
         let normalizedUrl = url.replace(/\/+/g, '/');
         normalizedUrl = normalizedUrl.startsWith('/') ? normalizedUrl.slice(1) : normalizedUrl;
         normalizedUrl = api ? `api/${normalizedUrl}` : normalizedUrl;
