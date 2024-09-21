@@ -1,12 +1,9 @@
 <template>
   <ArticleLayout :data_side_bar="data_in_side_bar">
     <template #content>
-      <div class="flex flex-col items-start my-6 gap-2 px-5 ">
-            <span class="font-bold text-[20px]">
-              مجله مهاجرتی آینده سبز
-            </span>
-        <span class="text-[16px] font-light">
-              معرفی انواع ویزا، معرفی ایالت ها و مطالب خواندنی مهاجرتی در آینده سبز
+      <div class="flex w-full items-center justify-center my-6 gap-2 px-5 ">
+        <span class="font-bold text-[20px]">
+          لیست مقالات
         </span>
       </div>
       <div v-if="loadingDataBlogs" class="h-full w-full flex justify-center items-center">
