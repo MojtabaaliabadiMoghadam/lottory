@@ -10,7 +10,4 @@
 import InfoLoginSection from "~/components/LoginSection/InfoLoginSection.vue";
 import BoxInformationIndex from "~/components/BoxInformation/BoxInformationIndex.vue";
 import FQIndex from "~/components/FQLists/FQIndex.vue";
-import { useApi } from '~/composables/useFetch';
-
-
 </script>

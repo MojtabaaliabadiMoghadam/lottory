@@ -27,10 +27,12 @@ import ArticleLayout from "~/components/Article/ArticleLayout.vue";
 import CardBoxArticle from "~/components/Article/CardBoxArticle.vue";
 import {useApi} from "~/composables/useFetch";
 import {useHelpers} from "~/composables/useHelpers";
+import {useDataGlobalStore} from "~/stores/globaData";
+
+
 const {getUrl,fetchData,showErrorToast,extractDate} = useHelpers()
 const { get } = useApi();
 const router = useRouter()
-const dataLoadingCard = ref<number[]>([1,2,3,4,5,6,7,8])
 const data_card_box = ref<any>()
 const error = ref()
 const dataPagination = ref<any>()

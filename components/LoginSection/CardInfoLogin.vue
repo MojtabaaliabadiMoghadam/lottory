@@ -1,5 +1,6 @@
 <template>
-  <div class="md:mx-0 bg-white rounded-3xl flex flex-col justify-center items-center md:hover:border-4 md:hover:border-green-500 border-4 border-transparent">
+  <div class="md:mx-0 bg-white rounded-3xl flex flex-col justify-center items-center md:hover:border-4 transition-all duration-150 ease-in
+   md:hover:border-green-500 border-4 border-transparent">
     <span class="py-5 font-bold text-[20px]">{{ props.title }}</span>
     <div class="flex flex-col">
       <div v-for="( card_data , index) in props.data" :key="index" class="flex items-center gap-1 justify-start px-3">
