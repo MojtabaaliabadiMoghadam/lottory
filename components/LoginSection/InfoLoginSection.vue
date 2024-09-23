@@ -9,9 +9,9 @@
           ثبت نام لاتاری 1403 گرین کارت آمریکا
         </span>
         <div class="flex flex-col md:flex-row gap-12">
-          <CardInfoLogin title_button="رزرو وقت سریع" title="ثبت نام سریع" :data="data_cards_2"/>
+          <CardInfoLogin :disable-button="true" title_button="رزرو وقت سریع" title="ثبت نام سریع" :data="data_cards_2"/>
           <QuickLoginBox title=" اطلاعات خود را وارد کنید ما در اسرع وقت با شما تماس میگیریم" title_button="همین حالا ثبت نام کنید" />
-          <CardInfoLogin title_button="ورود به ثبت نام" title="ثبت نام آنلاین" :data="data_cards"/>
+          <CardInfoLogin :disable-button="true" title_button="ورود به ثبت نام" title="ثبت نام آنلاین" :data="data_cards"/>
         </div>
         <div class="my-8">
           <ShortCutLoginSection :data_shortcuts="data_shortcuts" />

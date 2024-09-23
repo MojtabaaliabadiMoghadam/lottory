@@ -9,7 +9,11 @@
         {{ card_data.data }}
         </span>
       </div>
-      <button class="bg-[#58bc82] md:hover:bg-[#04644b] font-bold w-[280px] h-[48px] text-white text-[20px] rounded-xl mb-5 mx-10 mt-3">
+      <button :disabled="disableButton"
+              class="bg-[#58bc82]  disabled:bg-green-200 font-bold w-[280px]
+               h-[48px] text-white text-[20px] rounded-xl mb-5 mx-10 mt-3"
+              :class="[disableButton ? 'cursor-not-allowed': 'md:hover:bg-[#04644b]']"
+      >
         {{props.title_button}}
       </button>
     </div>
@@ -20,7 +24,10 @@ interface IPropsCard {
   data: any
   title: string
   title_button:string
+  disableButton?:boolean
 }
 
-const props = withDefaults(defineProps<IPropsCard>(), {})
+const props = withDefaults(defineProps<IPropsCard>(), {
+  disableButton:false
+})
 </script>
