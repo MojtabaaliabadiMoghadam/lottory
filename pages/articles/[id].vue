@@ -1,5 +1,5 @@
 <template>
-  <ArticleLayout :data_side_bar="data_in_side_bar">
+  <ArticleLayout :show-search="false" :data_side_bar="data_in_side_bar">
     <template #content>
       <div v-if="loadingDataBlog" class="flex w-full h-[100svh] items-center justify-center xl:h-full">
         <div role="status">

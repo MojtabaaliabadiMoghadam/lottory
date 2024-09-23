@@ -7,9 +7,9 @@
         </div>
         <div  class="hidden xl:block w-1/3 border-s-2">
           <div class="flex flex-col gap-20 mt-20 mx-10">
-            <div class="flex gap-2">
-              <input class="rounded-xl bg-[#f8f8f8] border border-[#ebebeb] text-black font-medium" placeholder="عبارت مورد نظر..." type="text">
-              <button class="rounded-xl hover:bg-gray-300 border border-[#ebebeb] bg-[#f8f8f8] p-3"> جستجو</button>
+            <div v-if="showSearch" class="flex gap-2">
+              <input v-model="store.searchFieldInArticle" class="rounded-xl bg-[#f8f8f8] border border-[#ebebeb] text-black font-medium" placeholder="عبارت مورد نظر..." type="text">
+              <button @click="$emit('clickOnButton')" class="rounded-xl hover:bg-gray-300 border border-[#ebebeb] bg-[#f8f8f8] p-3"> جستجو</button>
             </div>
             <div class="flex flex-col gap-7">
               <div class=" bg-[#cccccc] rounded-xl p-3">
@@ -31,12 +31,19 @@
   </div>
 </template>
 <script setup lang="ts">
+import {useDataGlobal} from "~/stores/globalStore";
+const emit = defineEmits(['clickOnButton'])
 interface ISideBarData {
   question:string;
   answer:string
 }
 interface IPropsData {
-  data_side_bar:ISideBarData
+  data_side_bar:ISideBarData;
+  showSearch?:boolean
 }
-const props = defineProps<IPropsData>()
+const props = withDefaults(defineProps<IPropsData>(),{
+  showSearch:true
+})
+
+const store = useDataGlobal()
 </script>

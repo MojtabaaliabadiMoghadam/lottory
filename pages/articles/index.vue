@@ -1,5 +1,5 @@
 <template>
-  <ArticleLayout :data_side_bar="data_in_side_bar">
+  <ArticleLayout  @clickOnButton="getData" :data_side_bar="data_in_side_bar">
     <template #content>
       <div class="flex w-full items-center justify-center my-6 gap-2 px-5 ">
         <span class="font-bold text-[20px]">
@@ -18,7 +18,7 @@
           <CardBoxArticle @click="goToArticle(data.id)"  :image="data.images[0]?.url" :title="data.title" :date_added="extractDate(data.created_at)"/>
         </div>
       </div>
-      <ui-kit-pagination v-if="dataPagination?.total" :total="dataPagination?.total" :current="dataPagination?.current_page" @update="updateRequestFromPagination"/>
+      <ui-kit-pagination v-if="!loadingDataBlogs" :total="dataPagination?.total" :current="dataPagination?.current_page" @update="updateRequestFromPagination"/>
     </template>
   </ArticleLayout>
 </template>
@@ -27,9 +27,9 @@ import ArticleLayout from "~/components/Article/ArticleLayout.vue";
 import CardBoxArticle from "~/components/Article/CardBoxArticle.vue";
 import {useApi} from "~/composables/useFetch";
 import {useHelpers} from "~/composables/useHelpers";
-import {useDataGlobalStore} from "~/stores/globaData";
+import {useDataGlobal} from "~/stores/globalStore";
 
-
+const store = useDataGlobal()
 const {getUrl,fetchData,showErrorToast,extractDate} = useHelpers()
 const { get } = useApi();
 const router = useRouter()
@@ -41,13 +41,15 @@ const loadingDataBlogs = ref<boolean>(true)
 const data_in_side_bar = [
   {question:'تلفن ثابت:',answer:'021-49374'},
   {question:'تلگرام و واتس اپ:',answer:'021-49374'},
-  {question:'ایمیل:',answer:'info@cartesabz.net'},
+  {question:'ایمیل:',answer:'info@ayandesabz.net'},
   {question:'آدرس ایران:',answer:'تهران، اتوبان همت غرب، شهرک گلستان، بلوار کوهک (علیمرادی)، مجتمع تجاری اداری طوبی چیتگر، برج A شمالی، طبقه 11، واحد 1'},
   {question:'ساعت کاری:',answer:'همه روزه از 9 صبح الی 17 (پنجشنبه ها تا 13، بجز تعطیلات رسمی)'},
 ]
+
 function goToArticle(id:number){
   router.push({path:`articles/${id}`})
 }
+
 async function getData (page?:any){
   loadingDataBlogs.value = true
   let url = getUrl('/blog')
@@ -57,8 +59,9 @@ async function getData (page?:any){
       method:'GET',
       parameters:{
         per_page: perPageData.value,
-        page: page ? page : 1
-      }
+        page: page ? page : 1,
+        search:store.searchFieldInArticle
+      },
     })
     if (status == 200){
       data_card_box.value = data.blogs

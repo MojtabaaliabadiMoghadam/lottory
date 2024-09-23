@@ -6,6 +6,7 @@ export default defineNuxtConfig({
       '~/assets/css/main.css',
     '@mdi/font/css/materialdesignicons.min.css'
   ],
+  modules: ['@pinia/nuxt'],
   runtimeConfig: {
     public: {
       BACK_END_URL: process.env.BACK_END_URL,
