@@ -10,6 +10,4 @@
 import InfoLoginSection from "~/components/LoginSection/InfoLoginSection.vue";
 import BoxInformationIndex from "~/components/BoxInformation/BoxInformationIndex.vue";
 import FQIndex from "~/components/FQLists/FQIndex.vue";
-
-console.log('gg')
 </script>
