@@ -1,17 +1,17 @@
 <template>
   <div class="sticky top-0 z-50">
-    <nav class="bg-[#003e25] text-white flex items-center gap-10 xl:justify-center justify-between xl:px-0 px-4">
+    <nav class="bg-theme-primary-100 text-white flex items-center gap-10 xl:justify-center justify-between xl:px-0 px-4">
       <div class="flex items-center md:max-w-7xl">
         <span @click="ChangeStatusShowMenu"
               :class="[!showMenu ? 'mdi-menu' : 'mdi-close']"
               class=" xl:hidden mdi mdi-36px" />
         <div class="items-center justify-between w-full flex">
-          <ul class="md:bg-[#003e25] gap-3 hidden font-medium xl:flex mt-0 space-x-6">
+          <ul class="md:bg-theme-primary-100 gap-3 hidden font-medium xl:flex mt-0 space-x-6">
             <li v-for="(header,index) in items_headers" :key="index">
               <NuxtLink :to="header.path"
                         @click="ChangeStatusShowMenu"
-                        :class="{'bg-gray-400' : route.path === header.path}"
-                        class="font-bold py-2 px-3 text-white transition-all ease-in duration-200 hover:bg-green-200 hover:text-green-800
+                        :class="{'bg-theme-primary-700' : route.path === header.path}"
+                        class="font-bold py-2 px-3 text-white transition-all ease-in duration-200 hover:bg-theme-primary-700 hover:text-white
                         border-0 p-0 h-[64px] min-w-[70px] flex justify-center items-center">
                 {{ header.title }}
               </NuxtLink>

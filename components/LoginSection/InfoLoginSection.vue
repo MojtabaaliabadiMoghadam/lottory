@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#04644b]">
+  <div class="bg-theme-primary-700">
     <div class="md:mx-auto md:max-w-5xl">
       <div class="flex flex-col gap-3 items-center justify-center pt-5 px-4">
         <span class="text-white font-bold text-[41px] select-none text-center">

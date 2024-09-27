@@ -2,6 +2,7 @@
     <div class="bg-[#efefef] px-6 md:px-0 py-10">
       <div class="mx-auto md:max-w-5xl">
         <div class="flex flex-col gap-5 items-start mb-10">
+          <slot name="title-box"/>
                   <span class="font-bold text-[28px] text-[#038831]">سوالات متداول لاتاری گرین کارت آمریکا</span>
                   <span class="text-[20px] text-start flex flex-col gap-5">
                     <span class="font-light">
@@ -14,14 +15,27 @@
                     </span>
                   </span>
         </div>
-        <div v-for="(question , index) in questions" :key="index"
-             class="flex flex-col gap-1"
+        <div class="flex flex-col gap-y-5" v-if="loadingDataQuestion">
+          <div v-for="item in [1,2,3,4,5,6]" role="status" class=" py-3 px-4 space-y-4 border border-gray-200 divide-y divide-gray-500 bg-gray-100 rounded-xl shadow-md
+          animate-pulse  md:p-6">
+            <div  class="flex items-center justify-between w-full">
+              <div class="w-3/4">
+                <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-96 mb-2.5"></div>
+              </div>
+              <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+            </div>
+            <span class="sr-only">Loading...</span>
+          </div>
+
+        </div>
+        <div v-else v-for="(question , index) in questions" :key="index"
+             class="flex flex-col gap-3"
              :class="{ 'gap-0': question.expanded}"
         >
           <button
               :id="'questions-title-' + (index + 1)"
               type="button"
-              class="py-2 px-4 rounded-xl font-light w-full bg-white flex items-center justify-between  gap-2 cursor-pointer"
+              class="py-3 px-4 rounded-xl font-light w-full bg-white flex items-center justify-between  gap-2 cursor-pointer"
               @click="toggleAccordion(index)"
               :aria-expanded="question.expanded"
               :aria-controls="'questions-text-' + (index + 1)"
@@ -53,83 +67,25 @@
     </div>
 </template>
 <script setup lang="ts">
-const questions = ref([
-  {
-    question: "گرین کارت چیست؟",
-    answer: "گرین کارت یا آینده سبز امریکا یک کارت شناسایی رسمی و قانونی است که افراد با داشتن آن می‌توانند به ‌مانند یک شهروند آمریکایی در این کشور آزادانه اقامت نمایند. در واقع، فرد صاحب گرین کارت با آنکه یک شخص خارجی محسوب می‌شود ولی می‌تواند به‌طور دائم در امریکا زندگی نماید و تحت حمایت قوانین امریکا قرار گیرد",
-    expanded: false
-  },
-  {
-    question: "برنامه لاتاری گرین کارت چیست؟",
-    answer: "برنامه لاتاری گرین کارت ایالات متحده یک قرعه کشی است برای دریافت گرین کارت که افراد با ثبت نام درآن، در صورت برنده شدن، می توانند گرین کارت یا همان کارت اقامت دائم را دریافت کنند. این برنامه ویزای اقامت دائم برای افرادیست که شرایط لازم را برای ثبت نام لاتاری را دارند",
-    expanded: false
-  },
-  {
-    question: "احتمال برنده شدن در لاتاری گرین کارت چگونه است؟",
-    answer: "اگر چه لاتاری قرعه کشی است و پذیرش افراد به شانس آنان بستگی دارد، احتمال برنده شدن متقاضیان در لاتاری گرین کارت به کشور و محل تولد آنها نیز ارتباط دارد. از آنجاییکه لاتاری برای حفظ تنوع نژادی مهاجران در آمریکا برگزار می شود، کشورهایی که از طرق غیر لاتاری هر سال مهاجر کمتری به امریکا دارند، درصد پذیرش بیشتری از لاتاری را به خود اختصاص می دهند",
-    expanded: false
-  },
-  {
-    question: "چند نفر از متقاضیان لاتاری انتخاب می شوند؟",
-    answer: "با اینکه تنها در هر سال 55 هزار ویزا برای افراد از سراسر دنیا در نظر گرفته شده است اما بیش از این تعداد به عنوان برنده لاتاری اعلام می شوند زیرا همه افراد برای باقی مراحل اقدام نمی کنند و درصد خیلی بالایی از افراد به علت نقص در پرونده و یا درج اطلاعات اشتباه به هنگام ثبت نام فاقد صلاحیت شناخته شد و از گرفتن ویزا باز می مانند.",
-    expanded: false
-  },
-  {
-    question: "فرزندان با چه سن و شرایطی می توانند زیر مجموعه والدین قرار بگیرند؟",
-    answer: "فرزندان زیر 18 سال زیر مجموعه پدر و مادر هستند و در فرم ثبت نامی آنها ثبت می شود.",
-    expanded: false
-  },
-  {
-    question: "پاسپورت از کجا دریافت کنیم؟ مدارک لازم برای گرفتن پاسپورت چیست؟",
-    answer: "شما می توانید از ادارات گذرنامه شهر خود نسبت به دریافت، تمدید یا تعویض پاسپورت خود اقدام نمایید. مدارک و هزینه ها هر سال تغییراتی دارند که می توانید از دفتر مورد نظر جویا شوید",
-    expanded: false
-  },
-  {
-    question: "آیا ایرانیان نیز حق شرکت در قرعه کشی لاتاری را دارند ؟",
-    answer: "بله  , ایران و کشورهای همسایه آن جز پاکستان جزو کشورهایی هست که افراد متولد در آن می توانند در قرعه کشی گرین کارت آمریکا شرکت کنند.",
-    expanded: false
-  },
-  {
-    question: "چند نفر از متقاضیان لاتاری انتخاب می شوند؟",
-    answer: "با اینکه تنها در هر سال 55 هزار ویزا برای افراد از سراسر دنیا در نظر گرفته شده است اما بیش از این تعداد به عنوان برنده لاتاری اعلام می شوند زیرا همه افراد برای باقی مراحل اقدام نمی کنند و درصد خیلی بالایی از افراد به علت نقص در پرونده و یا درج اطلاعات اشتباه به هنگام ثبت نام فاقد صلاحیت شناخته شد و از گرفتن ویزا باز می مانند.",
-    expanded: false
-  },
-  {
-    question: "فرزندان با چه سن و شرایطی می توانند زیر مجموعه والدین قرار بگیرند؟",
-    answer: "فرزندان زیر 18 سال زیر مجموعه پدر و مادر هستند و در فرم ثبت نامی آنها ثبت می شود.",
-    expanded: false
-  },
-  {
-    question: "پاسپورت از کجا دریافت کنیم؟ مدارک لازم برای گرفتن پاسپورت چیست؟",
-    answer: "شما می توانید از ادارات گذرنامه شهر خود نسبت به دریافت، تمدید یا تعویض پاسپورت خود اقدام نمایید. مدارک و هزینه ها هر سال تغییراتی دارند که می توانید از دفتر مورد نظر جویا شوید",
-    expanded: false
-  },
-  {
-    question: "آیا ایرانیان نیز حق شرکت در قرعه کشی لاتاری را دارند ؟",
-    answer: "بله  , ایران و کشورهای همسایه آن جز پاکستان جزو کشورهایی هست که افراد متولد در آن می توانند در قرعه کشی گرین کارت آمریکا شرکت کنند.",
-    expanded: false
-  },
-  {
-    question: "چند نفر از متقاضیان لاتاری انتخاب می شوند؟",
-    answer: "با اینکه تنها در هر سال 55 هزار ویزا برای افراد از سراسر دنیا در نظر گرفته شده است اما بیش از این تعداد به عنوان برنده لاتاری اعلام می شوند زیرا همه افراد برای باقی مراحل اقدام نمی کنند و درصد خیلی بالایی از افراد به علت نقص در پرونده و یا درج اطلاعات اشتباه به هنگام ثبت نام فاقد صلاحیت شناخته شد و از گرفتن ویزا باز می مانند.",
-    expanded: false
-  },
-  {
-    question: "فرزندان با چه سن و شرایطی می توانند زیر مجموعه والدین قرار بگیرند؟",
-    answer: "فرزندان زیر 18 سال زیر مجموعه پدر و مادر هستند و در فرم ثبت نامی آنها ثبت می شود.",
-    expanded: false
-  },
-  {
-    question: "پاسپورت از کجا دریافت کنیم؟ مدارک لازم برای گرفتن پاسپورت چیست؟",
-    answer: "شما می توانید از ادارات گذرنامه شهر خود نسبت به دریافت، تمدید یا تعویض پاسپورت خود اقدام نمایید. مدارک و هزینه ها هر سال تغییراتی دارند که می توانید از دفتر مورد نظر جویا شوید",
-    expanded: false
-  },
-  {
-    question: "آیا ایرانیان نیز حق شرکت در قرعه کشی لاتاری را دارند ؟",
-    answer: "بله  , ایران و کشورهای همسایه آن جز پاکستان جزو کشورهایی هست که افراد متولد در آن می توانند در قرعه کشی گرین کارت آمریکا شرکت کنند.",
-    expanded: false
-  }
-]);
+import {useHelpers} from "~/composables/useHelpers";
+const {getUrl,fetchData,showErrorToast} = useHelpers()
+
+
+// {
+//   question: "گرین کارت چیست؟",
+//       answer: "گرین کارت یا آینده سبز امریکا یک کارت شناسایی رسمی و قانونی است که افراد با داشتن آن می‌توانند به ‌مانند یک شهروند آمریکایی در این کشور آزادانه اقامت نمایند. در واقع، فرد صاحب گرین کارت با آنکه یک شخص خارجی محسوب می‌شود ولی می‌تواند به‌طور دائم در امریکا زندگی نماید و تحت حمایت قوانین امریکا قرار گیرد",
+//     expanded: false
+// }
+interface IQuestion {
+  id: number,
+  question: string,
+  answer: string
+  category: string,
+  status: number,
+  order: number
+}
+const questions = ref<IQuestion[]>([]);
+const loadingDataQuestion = ref<boolean>(true)
 const toggleAccordion = (value:number) => {
   questions.value.forEach((faq, i) => {
     if (value === i) {
@@ -139,6 +95,35 @@ const toggleAccordion = (value:number) => {
     }
   });
 };
+
+async function getData (page?:any){
+  loadingDataQuestion.value = true
+  let url = getUrl('/faqs')
+  try {
+    const {status,data,message} = await fetchData({
+      url:url,
+      method:'GET',
+      // parameters:{
+      //   category:'about_lottery'
+      // }
+    })
+    if (status == 200){
+      questions.value = data.faqs.map((question)=>{
+        return {
+          ...question,
+          expanded : false
+        }
+      })
+    }
+  }catch (err:any){
+    showErrorToast(err)
+  }finally {
+    loadingDataQuestion.value = false
+  }
+}
+onMounted(async ()=>{
+  await getData()
+})
 </script>
 <style>
 .gradient {

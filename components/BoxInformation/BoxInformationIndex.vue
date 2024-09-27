@@ -8,7 +8,7 @@
             <BoxInfo :data_info="data"/>
           </template>
         </div>
-        <BoxNotif :data_notification="data_notifications"/>
+        <BoxNotif @clickOnButton="router.push('/frequently-asked-questions')" :data_notification="data_notifications"/>
       </div>
     </div>
   </div>
@@ -16,6 +16,8 @@
 <script setup lang="ts">
 import BoxInfo from "~/components/BoxInformation/BoxInfo.vue";
 import BoxNotif from "~/components/Helpers/BoxNotif.vue";
+
+const router = useRouter()
 
 const box_data_information = [
   {
