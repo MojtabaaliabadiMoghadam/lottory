@@ -6,12 +6,12 @@
         </div>
         <div class="flex flex-col gap-y-5" v-if="loadingDataQuestion">
           <div v-for="item in [1,2,3,4,5,6]" role="status" class=" py-3 px-4 space-y-4 border border-gray-200 divide-y divide-gray-500 bg-gray-100 rounded-xl shadow-md
-          animate-pulse  md:p-6">
+          animate-pulse md:p-6">
             <div  class="flex items-center justify-between w-full">
               <div class="w-3/4">
-                <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-96 mb-2.5"></div>
+                <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600  mb-2.5"></div>
               </div>
-              <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 w-12"></div>
+              <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 "></div>
             </div>
             <span class="sr-only">Loading...</span>
           </div>
