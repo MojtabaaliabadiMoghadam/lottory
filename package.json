@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
+    "dev-home": "nuxt dev --host 192.168.1.100",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
