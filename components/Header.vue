@@ -25,12 +25,12 @@
 <!--      </div>-->
     </nav>
     <Transition>
-      <ul v-if="showMenu" class="xl:hidden bg-green-900/[0.9] w-full flex-col gap-3 flex font-medium absolute mt-0 space-x-6">
+      <ul v-if="showMenu" class="xl:hidden bg-theme-primary-900/[0.8] w-full flex-col gap-3 flex font-medium absolute mt-0 space-x-6">
         <li v-for="(header,index) in items_headers" :key="index" class="w-full">
           <NuxtLink :to="header.path"
                     @click="ChangeStatusShowMenu"
-                    :class="{'bg-gray-400' : route.path === header.path}"
-                    class="font-bold py-2 px-3 text-white  active:bg-green-200 active:text-green-800
+                    :class="{'bg-theme-primary-300 text-theme-primary-900' : route.path === header.path}"
+                    class="font-bold py-2 px-3 text-white
                           border-0  min-w-[70px] flex justify-center items-center">
             {{ header.title }}
           </NuxtLink>
@@ -45,7 +45,7 @@ const items_headers = reactive([
   {path:'/' , title: 'اصلی'},
   {path:'/articles' , title: 'مقالات'},
   {path:'/lottery-results' , title: 'نتایج لاتاری'},
-  // {path:'' , title: 'مشاوره برندگان'},
+  {path:'/frequently-asked-questions' , title: 'سوالات متداول'},
   // {path:'' , title: 'مشاوره مهاجرت'},
   // {path:'' , title: 'رضایت مشتری'},
   // {path:'' , title: 'مجوزها'},
