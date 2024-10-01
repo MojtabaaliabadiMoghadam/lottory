@@ -2,23 +2,28 @@
 export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: true },
+
   css: [
       '~/assets/css/main.css',
     '@mdi/font/css/materialdesignicons.min.css'
   ],
+
   modules: ['@pinia/nuxt'],
+
   runtimeConfig: {
     public: {
       BACK_END_URL: process.env.BACK_END_URL,
       TABLES_PER_PAGE: process.env.TABLES_PER_PAGE
     },
   },
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
   app: {
     head: {
       meta: [
@@ -36,5 +41,7 @@ export default defineNuxtConfig({
       noscript: []
     },
     pageTransition: { name: 'page', mode: 'out-in' }
-  }
+  },
+
+  compatibilityDate: '2024-09-27'
 })
