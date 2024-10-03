@@ -23,4 +23,6 @@
 <script setup lang="ts">
 import FQIndex from "~/components/FQLists/FQIndex.vue";
 import BoxInformationIndex from "~/components/BoxInformation/BoxInformationIndex.vue";
+
+console.log('run')
 </script>
