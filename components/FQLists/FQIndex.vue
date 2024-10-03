@@ -24,7 +24,7 @@
           <button
               :id="'questions-title-' + (index + 1)"
               type="button"
-              class="py-3 px-4 rounded-xl font-light w-full bg-white flex items-center justify-between  gap-2 cursor-pointer"
+              class="py-3 px-4 rounded-xl font-light w-full bg-theme-primary-200 flex items-center justify-between  gap-2 cursor-pointer"
               @click="toggleAccordion(index)"
               :aria-expanded="question.expanded"
               :aria-controls="'questions-text-' + (index + 1)"

@@ -1,17 +1,18 @@
 <template>
   <div class="sticky top-0 z-50">
-    <nav class="bg-theme-primary-100 text-white flex items-center gap-10 xl:justify-center justify-between xl:px-0 px-4">
+    <nav class="bg-theme-primary-300 text-white flex items-center gap-10 xl:justify-center justify-between xl:px-0 px-4">
       <div class="flex items-center md:max-w-7xl">
         <span @click="ChangeStatusShowMenu"
               :class="[!showMenu ? 'mdi-menu' : 'mdi-close']"
               class=" xl:hidden mdi mdi-36px" />
         <div class="items-center justify-between w-full flex">
-          <ul class="md:bg-theme-primary-100 gap-3 hidden font-medium xl:flex mt-0 space-x-6">
+          <ul class="md:bg-theme-primary-300 gap-3 hidden font-medium xl:flex mt-0 space-x-6">
             <li v-for="(header,index) in items_headers" :key="index">
               <NuxtLink :to="header.path"
                         @click="ChangeStatusShowMenu"
                         :class="{'bg-theme-primary-700' : route.path === header.path}"
-                        class="font-bold py-2 px-3 text-white transition-all ease-in duration-200 hover:bg-theme-primary-700 hover:text-white
+                        class="font-bold py-2 px-3 text-white transition-all ease-in duration-200
+                         hover:bg-theme-primary-700 hover:text-white
                         border-0 p-0 h-[64px] min-w-[70px] flex justify-center items-center">
                 {{ header.title }}
               </NuxtLink>
@@ -25,13 +26,14 @@
 <!--      </div>-->
     </nav>
     <Transition>
-      <ul v-if="showMenu" class="xl:hidden bg-theme-primary-900/[0.8] w-full flex-col gap-3 flex font-medium absolute mt-0 space-x-6">
+      <ul v-if="showMenu" class="xl:hidden bg-theme-primary-800/[0.8] w-full flex-col gap-3 flex font-medium
+       absolute mt-0 space-x-6">
         <li v-for="(header,index) in items_headers" :key="index" class="w-full">
           <NuxtLink :to="header.path"
                     @click="ChangeStatusShowMenu"
-                    :class="{'bg-theme-primary-300 text-theme-primary-900' : route.path === header.path}"
+                    :class="{'bg-theme-primary-200 !text-theme-primary-900' : route.path === header.path}"
                     class="font-bold py-2 px-3 text-white
-                          border-0  min-w-[70px] flex justify-center items-center">
+                          border-0  min-w-[70px] flex justify-center items-center rounded-xl mx-2 mt-2">
             {{ header.title }}
           </NuxtLink>
         </li>
