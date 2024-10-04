@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[#efefef] px-6 md:px-0 py-10 h-[calc(100vh-64px)]">
+    <div class="bg-[#efefef] px-6 md:px-0 py-10">
       <div v-if="!showNotFoundPage" class="mx-auto md:max-w-5xl">
         <div class="flex flex-col gap-5 items-start mb-10">
           <slot name="title-box"/>
