@@ -44,7 +44,7 @@
               :id="'questions-text-' + (index + 1)"
               role="region"
               :aria-labelledby="'questions-title-' + (index + 1)"
-              class="text-right grid bg-theme-primary-100 text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out rounded-xl"
+              class="text-right grid bg-theme-primary-200 text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out rounded-xl"
               :class="question.expanded ? 'mb-3 grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'"
           >
             <div class="overflow-hidden">
