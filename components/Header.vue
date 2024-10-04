@@ -48,11 +48,8 @@ const items_headers = reactive([
   {path:'/articles' , title: 'مقالات'},
   {path:'/lottery-results' , title: 'نتایج لاتاری'},
   {path:'/frequently-asked-questions' , title: 'سوالات متداول'},
-  // {path:'' , title: 'مشاوره مهاجرت'},
-  // {path:'' , title: 'رضایت مشتری'},
-  // {path:'' , title: 'مجوزها'},
-  {path:'' , title: 'درباره ما'},
-  {path:'' , title: 'تماس با ما'},
+  {path:'/about-us' , title: 'درباره ما'},
+  {path:'call-us' , title: 'تماس با ما'},
 ])
 const showMenu = ref<boolean>(false)
 function ChangeStatusShowMenu(){
