@@ -63,7 +63,7 @@
 <script setup lang="ts">
 import {useHelpers} from "~/composables/useHelpers";
 const {getUrl,fetchData,showErrorToast} = useHelpers()
-
+console.log('run')
 const showNotFoundPage = ref<boolean>(false)
 interface IQuestion {
   id: number,
