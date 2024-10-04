@@ -1,15 +1,15 @@
 <template>
-  <div class="flex gap-14 flex-col w-[360px] border border-green-400 rounded-2xl">
-    <div class="bg-[#04644b] p-[20px] text-center rounded-t-xl py-8 relative">
+  <div class="flex gap-14 flex-col w-[360px] border border-theme-primary-500 rounded-2xl">
+    <div class="bg-theme-primary-500 p-[20px] text-center rounded-t-xl py-8 relative">
       <span class="text-white font-bold text-[20px]">{{props.data_card.title}}</span>
       <span
-          class="mdi mdi-triangle-down text-[#04644b] mdi-24px absolute top-[84px] right-[166px]"></span>
+          class="mdi mdi-triangle-down text-theme-primary-500 mdi-24px absolute top-[84px] right-[166px]"></span>
     </div>
     <div class="flex items-center justify-center">
-      <div class="rounded-3xl bg-[#e6f4eb] border border-2 border-dashed border-green-700">
+      <div class="rounded-3xl bg-theme-primary-50 border border-2 border-dashed border-theme-primary-700">
         <span
             :class="props.data_card.icon"
-            class="mdi mdi-48px text-green-800 px-3"></span>
+            class="mdi mdi-48px text-theme-primary-800 px-3"></span>
       </div>
     </div>
     <div class="flex flex-col gap-3 items-center justify-center mb-10">

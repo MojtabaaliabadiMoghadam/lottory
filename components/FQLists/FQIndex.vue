@@ -1,6 +1,6 @@
 <template>
-    <div class="bg-[#efefef] px-6 md:px-0 py-10">
-      <div class="mx-auto md:max-w-5xl">
+    <div class="bg-[#efefef] px-6 md:px-0 py-10 h-[calc(100vh-64px)]">
+      <div v-if="!showNotFoundPage" class="mx-auto md:max-w-5xl">
         <div class="flex flex-col gap-5 items-start mb-10">
           <slot name="title-box"/>
         </div>
@@ -33,7 +33,7 @@
                   :class="{ '': question.expanded}"
                   class=" text-black font-light text-right w-10/12 text-[16px] tracking-[0.02em]">{{ question.question }}
               </span>
-              <span class="mdi mdi-24px text-gray-300"
+              <span class="mdi mdi-24px text-black"
                  :class="{
                      'mdi-plus-box-outline':!question.expanded,
                      'mdi-minus-box-outline':question.expanded
@@ -44,7 +44,7 @@
               :id="'questions-text-' + (index + 1)"
               role="region"
               :aria-labelledby="'questions-title-' + (index + 1)"
-              class="text-right grid bg-[#f8f8f8] text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out rounded-xl"
+              class="text-right grid bg-theme-primary-100 text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out rounded-xl"
               :class="question.expanded ? 'mb-3 grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'"
           >
             <div class="overflow-hidden">
@@ -53,18 +53,18 @@
           </div>
         </div>
       </div>
+      <div v-else class="flex w-full items-center justify-center">
+        <span class="text-[20px] font-bold">
+          هیچ رکوردی برای نمایش وجود ندارد
+        </span>
+      </div>
     </div>
 </template>
 <script setup lang="ts">
 import {useHelpers} from "~/composables/useHelpers";
 const {getUrl,fetchData,showErrorToast} = useHelpers()
 
-
-// {
-//   question: "گرین کارت چیست؟",
-//       answer: "گرین کارت یا آینده سبز امریکا یک کارت شناسایی رسمی و قانونی است که افراد با داشتن آن می‌توانند به ‌مانند یک شهروند آمریکایی در این کشور آزادانه اقامت نمایند. در واقع، فرد صاحب گرین کارت با آنکه یک شخص خارجی محسوب می‌شود ولی می‌تواند به‌طور دائم در امریکا زندگی نماید و تحت حمایت قوانین امریکا قرار گیرد",
-//     expanded: false
-// }
+const showNotFoundPage = ref<boolean>(false)
 interface IQuestion {
   id: number,
   question: string,
@@ -103,6 +103,9 @@ async function getData (page?:any){
           expanded : false
         }
       })
+      showNotFoundPage.value = false
+    }else{
+      showNotFoundPage.value = true
     }
   }catch (err:any){
     showErrorToast(err)
