@@ -15,20 +15,26 @@
         </div>
       </div>
     </div>
-    <div class="md:col-span-3 gap-2 col-span-12 flex flex-col justify-start rounded-xl p-8 h-full">
+    <div class="md:col-span-3 col-span-12 flex flex-col justify-start rounded-xl p-8 h-full">
       <span class="w-full text-center font-bold text-[16px] border-b border-white text-white mb-4 pb-4">راه های ارتباط با ما</span>
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="flex items-center hover:ring-2 ring-white hover:rounded-xl transition-all duration-150 ease-in h-full justify-between pe-8">
+      <div class="flex py-2 px-4 flex-col items-center justify-between md:border-e h-full">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+           class="flex focus:ring-0 focus-visible:outline-none items-center hover:ring-2 hover:ring-white
+          md:hover:rounded-xl transition-all duration-150 ease-in justify-between md:pe-8 w-full">
           <img class="!h-[90px] !w-[90px] object-contain" src="@/assets/images/instagram-removebg-preview.png" alt="Instagram">
-        <span class="text-white">مارا در اینستاگرام دنبال کنید</span>
-      </a>
-      <a href="https://t.me/ayandes" target="_blank" rel="noopener noreferrer" class="flex items-center hover:ring-2 ring-white hover:rounded-xl h-full justify-between pe-8">
-          <img class="!h-[90px] !w-[90px] object-contain" src="@/assets/images/telegram2-removebg-preview.png" alt="Telegram">
-        <span class="text-white">مارا در تلگرام دنبال کنید</span>
-      </a>
+          <span class="text-white">مارا در اینستاگرام دنبال کنید</span>
+        </a>
+        <a href="https://t.me/ayandes" target="_blank" rel="noopener noreferrer"
+           class="flex focus:ring-0 focus-visible:outline-none items-center hover:ring-2 hover:ring-white
+          md:hover:rounded-xl transition-all duration-150 ease-in justify-between md:pe-8 !h-[90px] w-full">
+          <img class="h-[70px] !w-[70px] ps-2 object-contain" src="@/assets/images/telegram2-removebg-preview.png" alt="Telegram">
+          <span class="text-white">مارا در تلگرام دنبال کنید</span>
+        </a>
+      </div>
     </div>
     <div class="md:col-span-3 col-span-12 flex flex-col justify-start rounded-xl p-8">
       <span class="w-full text-center font-bold text-[16px] border-b border-white text-white mb-4 pb-4">خلاصه ای از اهداف ما</span>
-      <div class="flex flex-col items-center justify-start px-8 border-e h-full">
+      <div class="flex flex-col items-center justify-start px-8 md:border-e h-full">
         <span class="text-white text-[14px] text-center font-medium leading-9">
           ما در آینده سبز هدفون  اینکه با کمترین اتلاف وقت و کم ترین هزینه در لاتاری ثبت نام کنید و شانس خود را امتحان کنید.
         </span>
@@ -52,3 +58,7 @@ const listOfFooter = [
   {title:'مقالات ',path:"/articles"},
 ]
 </script>
+<style>
+
+
+</style>
