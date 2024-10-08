@@ -45,6 +45,7 @@
 const route = useRoute()
 const items_headers = reactive([
   {path:'/' , title: 'اصلی'},
+  {path:'/register' , title: 'ثبت نام لاتاری'},
   {path:'/articles' , title: 'مقالات'},
   {path:'/register' , title: 'ثبت نام لاتاری'},
   {path:'/lottery-results' , title: 'نتایج لاتاری'},

@@ -13,8 +13,7 @@
       </div>
     </div>
     <div class="flex flex-col gap-3 items-center justify-center mb-10">
-      <span class="text-green-950 font-bold">{{props.data_card.title_button_1}}</span>
-      <span class="text-green-950 font-bold">{{props.data_card.title_button_2}}</span>
+      <span v-for="data in props?.data_card?.data_bottom" class="text-theme-primary-950 font-bold">{{data.text}}</span>
     </div>
   </div>
 </template>
@@ -22,8 +21,7 @@
 interface IItemData {
   title:string;
   icon:string;
-  title_button_1:string
-  title_button_2:string
+  data_bottom:[]
 }
 interface IPropsData {
   data_card:IItemData

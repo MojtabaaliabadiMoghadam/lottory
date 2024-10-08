@@ -7,7 +7,7 @@
       </span>
       <div class="flex gap-6 flex-col md:flex-row">
         <BoxRegisterCost :data_card="data_card_1"/>
-        <BoxRegisterCost :data_card="data_card_2"/>
+        <BoxRegisterCost :data_card="data_card_2" />
       </div>
       <BoxNotification/>
     </div>
@@ -19,15 +19,20 @@ import BoxRegisterCost from "~/components/RegisterCost/BoxRegisterCost.vue";
 import BoxNotification from "~/components/RegisterCost/BoxNotification.vue";
 
 const data_card_1 = {
-  title:'پذیرش حضوری',
+  title:'پذیرش افراد متاهل',
   icon:'mdi-login-variant',
-  title_button_1:'بزرگسال هر نفر: 380 هزار تومان + عکاسی',
-  title_button_2:'فرزند زیرمجموعه هر نفر: 240 هزار تومان + عکاسی'
+  data_bottom:[
+    {text: 'هزینه ثبت نام متاهل تک شانسه 300 هزار تومن'},
+    {text: 'هزینه ثبت نام متاهل دو شانسه 420 هزار تومن'},
+    {text: 'هزینه ثبت نام هر فرزند 50 هزار تومن'}
+  ]
 }
 const data_card_2 = {
   title:'پذیرش غیرحضوری',
   icon:' mdi-account-check',
-  title_button_1:'بزرگسال هر نفر: 250 هزار تومان',
-  title_button_2:'فرزند زیرمجموعه هر نفر: 90 هزار تومان'
+  data_bottom:[
+    {text: 'بزرگسال  مجرد هر نفر: 200 هزار تومان'},
+  ]
+
 }
 </script>
