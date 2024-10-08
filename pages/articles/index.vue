@@ -18,7 +18,7 @@
           <CardBoxArticle @click="goToArticle(data.id)"  :image="data.images[0]?.url" :title="data.title" :date_added="extractDate(data.created_at)"/>
         </div>
       </div>
-      <ui-kit-pagination v-if="!loadingDataBlogs" :total="dataPagination?.total" :current="dataPagination?.current_page" @update="updateRequestFromPagination"/>
+      <ui-kit-pagination v-if="!loadingDataBlogs && dataPagination?.total" :total="dataPagination?.total" :current="dataPagination?.current_page" @update="updateRequestFromPagination"/>
     </template>
   </ArticleLayout>
 </template>
@@ -39,10 +39,8 @@ const dataPagination = ref<any>()
 const perPageData = ref<number>(12)
 const loadingDataBlogs = ref<boolean>(true)
 const data_in_side_bar = [
-  {question:'تلفن ثابت:',answer:'021-49374'},
-  {question:'تلگرام و واتس اپ:',answer:'021-49374'},
-  {question:'ایمیل:',answer:'info@ayandesabz.net'},
-  {question:'آدرس ایران:',answer:'تهران، اتوبان همت غرب، شهرک گلستان، بلوار کوهک (علیمرادی)، مجتمع تجاری اداری طوبی چیتگر، برج A شمالی، طبقه 11، واحد 1'},
+  {question:'تلگرام و واتس اپ:',answer:'09012336675'},
+  {question:'ایمیل:',answer:'ayandesabz.@gmail.com'},
   {question:'ساعت کاری:',answer:'همه روزه از 9 صبح الی 17 (پنجشنبه ها تا 13، بجز تعطیلات رسمی)'},
 ]
 

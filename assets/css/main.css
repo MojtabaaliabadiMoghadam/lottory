@@ -12,3 +12,15 @@ body {
     direction: rtl;
     @apply bg-gradient-to-r from-blue-start-bg to-blue-end-bg
 }
+button {
+    all: unset;  /* Resets almost everything */
+    background: none;  /* Removes default background */
+    border: none;      /* Removes any border */
+    padding: 0;        /* Removes padding */
+    margin: 0;         /* Removes margin */
+    box-shadow: none;  /* Removes any shadow */
+    outline: none;     /* Removes default outline on focus */
+    font: inherit;     /* Ensures font family and size are inherited */
+    color: inherit;    /* Inherit text color */
+    cursor: pointer;   /* Restores pointer on hover */
+}

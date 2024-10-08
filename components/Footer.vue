@@ -25,9 +25,9 @@
           <span class="text-white">مارا در اینستاگرام دنبال کنید</span>
         </a>
         <a href="https://t.me/ayandes" target="_blank" rel="noopener noreferrer"
-           class="flex focus:ring-0 focus-visible:outline-none items-center hover:ring-2 hover:ring-white
+           class="flex focus:ring-0 focus-visible:outline-none items-center hover:!ring-2 hover:!ring-white
           md:hover:rounded-xl transition-all duration-150 ease-in justify-between md:pe-8 !h-[90px] w-full">
-          <img class="h-[70px] !w-[70px] ps-2 object-contain" src="@/assets/images/telegram2-removebg-preview.png" alt="Telegram">
+          <img class="h-[70px] !w-[70px] ps-2  object-contain" src="@/assets/images/telegram2-removebg-preview.png" alt="Telegram">
           <span class="text-white">مارا در تلگرام دنبال کنید</span>
         </a>
       </div>

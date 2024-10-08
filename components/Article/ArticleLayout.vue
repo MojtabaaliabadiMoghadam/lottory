@@ -5,23 +5,23 @@
         <div class="xl:w-3/4 w-full flex flex-col items-center xl:items-start">
           <slot name="content"/>
         </div>
-        <div  class="hidden xl:block w-1/3 border-s-2">
+        <div  class="hidden xl:block w-1/3 border-s-2 pb-16">
           <div class="flex flex-col gap-20 mt-20 mx-10">
             <div v-if="showSearch" class="flex gap-2">
               <ui-kit-input v-model="store.searchFieldInArticle" place-holder="عبارت مورد نظر..."/>
-<!--              <input v-model="store.searchFieldInArticle" class="rounded-xl bg-[#f8f8f8] border border-[#ebebeb] text-black font-medium"  type="text">-->
-              <button @click="$emit('clickOnButton')" class="rounded-xl hover:bg-gray-300 border border-[#ebebeb] bg-[#f8f8f8] p-3"> جستجو</button>
+              <button @click="$emit('clickOnButton')" class="rounded-xl hover:bg-theme-primary-500 transition-all
+              duration-150 ease-in text-white bg-theme-primary-700 p-3"> جستجو</button>
             </div>
             <div class="flex flex-col gap-7">
-              <div class=" bg-[#cccccc] rounded-xl p-3">
-                <span class="text-[#a50933] font-medium text-[20px]">
+              <div class=" bg-theme-primary-200 rounded-xl p-3">
+                <span class="text-black font-medium text-[20px]">
                   ارتباط با آینده سبز
                 </span>
               </div>
               <div v-for="data in props.data_side_bar" >
                 <div class="flex flex-col gap-2 text-[16px]">
-                  <span class="font-medium">{{data.question}}</span>
-                  <span>{{data.answer}}</span>
+                  <span class="font-medium">{{data?.question}}</span>
+                  <span>{{data?.answer}}</span>
                 </div>
               </div>
             </div>
