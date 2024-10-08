@@ -11,6 +11,8 @@ export default {
   mode:'jit',
   theme: {
     colors: {
+      'blue-start-bg': '#83a4d4',
+      'blue-end-bg': '#b6fbff',
       'theme-primary-25': '#F5FBFF',
       'theme-primary-50': '#F0F9FF',
       'theme-primary-100': '#E0F2FE',

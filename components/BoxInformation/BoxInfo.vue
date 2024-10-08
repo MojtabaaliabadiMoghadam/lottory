@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-3 px-4 flex-col py-3 items-start border border-theme-primary-700 rounded-xl relative overflow-hidden">
+  <div class="flex gap-3 px-4 flex-col py-3 items-start border-2 border-theme-primary-900 rounded-xl relative overflow-hidden">
     <span class="text-black font-bold text-[20px] px-1">
       {{props.data_info.question}}
     </span>

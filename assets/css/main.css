@@ -10,4 +10,5 @@
 body {
     font-family: 'vazir', sans-serif;
     direction: rtl;
+    @apply bg-gradient-to-r from-blue-start-bg to-blue-end-bg
 }

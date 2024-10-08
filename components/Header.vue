@@ -10,8 +10,8 @@
             <li v-for="(header,index) in items_headers" :key="index">
               <NuxtLink :to="header.path"
                         @click="ChangeStatusShowMenu"
-                        :class="{'bg-theme-primary-700' : route.path === header.path}"
-                        class="font-bold py-2 px-3 text-white transition-all ease-in duration-200
+                        :class="{'bg-theme-primary-700 !text-white' : route.path === header.path}"
+                        class="font-bold py-2 px-3 text-theme-primary-950 transition-all ease-in duration-200
                          hover:bg-theme-primary-700 hover:text-white
                         border-0 p-0 h-[64px] min-w-[70px] flex justify-center items-center">
                 {{ header.title }}
@@ -46,10 +46,11 @@ const route = useRoute()
 const items_headers = reactive([
   {path:'/' , title: 'اصلی'},
   {path:'/articles' , title: 'مقالات'},
+  {path:'/register' , title: 'ثبت نام لاتاری'},
   {path:'/lottery-results' , title: 'نتایج لاتاری'},
   {path:'/frequently-asked-questions' , title: 'سوالات متداول'},
   {path:'/about-us' , title: 'درباره ما'},
-  {path:'call-us' , title: 'تماس با ما'},
+  {path:'/call-us' , title: 'تماس با ما'},
 ])
 const showMenu = ref<boolean>(false)
 function ChangeStatusShowMenu(){

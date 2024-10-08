@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[#efefef] px-6 md:px-0 py-10">
+    <div class="px-6 md:px-0 py-10">
       <div v-if="!showNotFoundPage" class="mx-auto md:max-w-5xl">
         <div class="flex flex-col gap-5 items-start mb-10">
           <slot name="title-box"/>
@@ -24,14 +24,14 @@
           <button
               :id="'questions-title-' + (index + 1)"
               type="button"
-              class="py-3 px-4 rounded-xl font-light w-full bg-theme-primary-200 flex items-center justify-between  gap-2 cursor-pointer"
+              class="py-3 px-4 rounded-xl font-light w-full bg-theme-primary-100 flex items-center justify-between  gap-2 cursor-pointer"
               @click="toggleAccordion(index)"
               :aria-expanded="question.expanded"
               :aria-controls="'questions-text-' + (index + 1)"
           >
               <span
                   :class="{ '': question.expanded}"
-                  class=" text-black font-light text-right w-10/12 text-[16px] tracking-[0.02em]">{{ question.question }}
+                  class=" text-black font-bold text-right w-10/12 text-[16px] tracking-[0.02em]">{{ question.question }}
               </span>
               <span class="mdi mdi-24px text-black"
                  :class="{
@@ -44,7 +44,7 @@
               :id="'questions-text-' + (index + 1)"
               role="region"
               :aria-labelledby="'questions-title-' + (index + 1)"
-              class="text-right grid bg-theme-primary-200 text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out rounded-xl"
+              class="text-right grid bg-theme-primary-100 text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out rounded-xl"
               :class="question.expanded ? 'mb-3 grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'"
           >
             <div class="overflow-hidden">

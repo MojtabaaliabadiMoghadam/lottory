@@ -43,7 +43,9 @@
     <div class="md:col-span-3 col-span-12 flex flex-col justify-start rounded-xl p-8">
       <span class="w-full text-center font-bold text-[16px] border-b border-white text-white mb-4 pb-4">دستاورد اعتماد شما به ما</span>
       <div class="flex flex-col items-center justify-start px-8 border-e h-full">
-        <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=531369&Code=6WPVisvqjbci5fxUXGW9dYX1ojBis0nC'><img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=531369&Code=6WPVisvqjbci5fxUXGW9dYX1ojBis0nC' alt='' style='cursor:pointer' code='6WPVisvqjbci5fxUXGW9dYX1ojBis0nC'></a>
+        <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=531369&Code=6WPVisvqjbci5fxUXGW9dYX1ojBis0nC'>
+          <img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=531369&Code=6WPVisvqjbci5fxUXGW9dYX1ojBis0nC'
+               alt='' style='cursor:pointer' code='6WPVisvqjbci5fxUXGW9dYX1ojBis0nC'></a>
       </div>
     </div>
   </div>

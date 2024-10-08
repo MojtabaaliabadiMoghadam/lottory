@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-[#efefef] px-6 md:px-0">
+  <div class=" px-6 md:px-0">
     <div class="mx-auto md:max-w-5xl">
       <div class="flex flex-col gap-16 py-10">
-        <span class="text-[34px] font-bold text-center">همه چیز درباره ثبت نام لاتاری</span>
-        <div class="flex gap-2 flex-col">
+        <span class="text-[34px] font-bold text-theme-primary-950 text-center">همه چیز درباره ثبت نام لاتاری</span>
+        <div class="flex gap-4 flex-col">
           <template v-for="(data , index) in box_data_information" :key="index">
             <BoxInfo :data_info="data"/>
           </template>

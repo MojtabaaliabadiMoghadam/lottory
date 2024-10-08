@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-full">
     <login-section-info-login-section/>
     <RegisterCostIndex/>
     <box-information-index/>
