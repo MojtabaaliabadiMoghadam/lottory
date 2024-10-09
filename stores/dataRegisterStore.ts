@@ -7,8 +7,10 @@ export const useDataRegister = defineStore('dataRegister', () => {
         {text:'تکمیل',active:false,key:'completion'}
     ])
     const is_married = ref<number>()
+    const kindNotMarried = ref<'not-married' | 'absolute' | 'deceased-wife' | 'separation'|''>('');
     return {
         dataStatusBar,
-        is_married
+        is_married,
+        kindNotMarried
     }
 })
