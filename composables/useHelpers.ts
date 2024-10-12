@@ -1,7 +1,7 @@
 import type {AxiosResponse} from 'axios';
 import axios from 'axios';
 // axios.defaults.withCredentials = true;
-import {toast} from 'vue3-toastify'
+
 
 axios.defaults.withCredentials = true;  // اصلاح با withCredentials
 
@@ -50,6 +50,7 @@ enum HttpMethods {
 
 // A collection of helper functions.
 export function useHelpers() {
+    const { $toast } = useNuxtApp()
     const runtimeConfig = useRuntimeConfig();
     const backEndUrl: string | null = runtimeConfig.public?.BACK_END_URL
     const isDev: boolean = process.env.NODE_ENV === 'development';
@@ -200,16 +201,21 @@ export function useHelpers() {
     }
 
 
-     function showSuccessToast(message: string) {
-        toast.success(message, {
-            autoClose: 2000,
-            position: toast.POSITION.TOP_CENTER,
+    const showErrorToast = (message: string) => {
+        $toast(message, {
+            type: 'error',
+            position: 'top-center',
+            duration: 3000,
+            theme: 'light',
         })
     }
-     function showErrorToast(message: string) {
-        toast.error(message, {
-            autoClose: 2000,
-            position: toast.POSITION.TOP_CENTER,
+
+    const showSuccessToast = (message: string) => {
+        $toast(message, {
+            type: 'success',
+            position: 'top-center',
+            duration: 3000,
+            theme: 'light',
         })
     }
     return {

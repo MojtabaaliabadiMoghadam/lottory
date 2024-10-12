@@ -12,12 +12,12 @@
     <slot />
 
     <div class="flex items-center justify-between gap-10 pb-6 pt-10">
-      <ui-kit-base-button @click-on="dynamicBack" label="صفحه قبل" theme="theme_secondary" class-button="md:py-2">
+      <ui-kit-base-button @click-on="dynamicBack" label="صفحه قبل" theme="theme_secondary" class-button="md:!py-2">
         <template #before_label>
           <span class="mdi mdi-chevron-right mdi-24px pe-4"/>
         </template>
       </ui-kit-base-button>
-      <ui-kit-base-button @click-on="dynamicNext" label="ثبت و ادامه" theme="theme_secondary" class-button="md:py-2">
+      <ui-kit-base-button @click-on="dynamicNext" label="ثبت و ادامه" theme="theme_secondary" class-button="md:!py-2">
         <template #after_label>
           <span class="mdi mdi-chevron-left mdi-24px ps-4"/>
         </template>
@@ -29,7 +29,7 @@
 import {useDataRegister} from "~/stores/dataRegisterStore";
 
 const route = useRoute()
-const {showSuccessToast} = useHelpers()
+const {showErrorToast} = useHelpers()
 const store = useDataRegister()
 const router = useRouter()
 function dynamicBack() {
@@ -43,9 +43,9 @@ function dynamicNext(){
   if (route.path == '/register/start'){
     console.log(store.is_married != null)
     if (store.is_married != null){
-      router.push('/personal-info')
+      router.push('personal-info')
     }else{
-      showSuccessToast('sc')
+      showErrorToast(' ! ابتدا وضعیت تاهل خود را مشخص کنید')
     }
   }
 }
