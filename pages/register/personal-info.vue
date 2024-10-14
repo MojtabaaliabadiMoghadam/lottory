@@ -18,8 +18,8 @@
         <div class="md:col-span-6 col-span-12 flex items-center justify-center">
           <ui-kit-input label="نام خانوادگی (انگلیسی)" />
         </div>
-        <div dir="rtl" class="md:col-span-6 col-span-12 flex flex-col items-start justify-center">
-          <label for="">تاریخ تولد</label>
+        <div class="md:col-span-6 col-span-12 flex flex-col items-start w-full justify-center">
+          <label class="" for="">تاریخ تولد</label>
           <DatePicker v-model="icondisplay" showIcon fluid iconDisplay="input" />
         </div>
       </div>
@@ -30,3 +30,8 @@
 import DatePicker from 'primevue/datepicker';
 const icondisplay = ref()
 </script>
+<style>
+.p-datepicker-panel {
+  direction: ltr !important;
+}
+</style>

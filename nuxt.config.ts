@@ -14,12 +14,15 @@ export default defineNuxtConfig({
     '@primevue/nuxt-module'
   ],
   primevue: {
+    locale: {
+      rtl: true // فعال‌سازی حالت راست‌به‌چپ
+    },
     options: {
       theme: {
         preset: Aura,
         options: {
           darkModeSelector: 'light',
-        }
+        },
       }
     }
   },
