@@ -218,6 +218,48 @@ export function useHelpers() {
             theme: 'light',
         })
     }
+    function toPersianNumber(num) {
+        const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
+        return num.toString().replace(/[0-9]/g, (digit) => persianDigits[digit]);
+    }
+
+    function getJalaliOptions(type) {
+        const options = [];
+
+        if (type === 'year') {
+            const currentDate = new Date();
+            const gYear = currentDate.getFullYear();
+            const gMonth = currentDate.getMonth() + 1;
+            const gDay = currentDate.getDate();
+
+            // Approximate conversion from Gregorian to Jalali
+            const jalaliYear = gYear - 621 - ((gMonth < 3 || (gMonth === 3 && gDay < 21)) ? 1 : 0);
+
+            for (let i = jalaliYear; i > jalaliYear - 100; i--) {
+                const yearLabel = toPersianNumber(i);
+                options.push({ name: yearLabel, id: i });
+            }
+        } else if (type === 'month') {
+            const jalaliMonths = [
+                "فروردین", "اردیبهشت", "خرداد",
+                "تیر", "مرداد", "شهریور",
+                "مهر", "آبان", "آذر",
+                "دی", "بهمن", "اسفند"
+            ];
+            jalaliMonths.forEach((month, index) => {
+                options.push({ name: month, id: toPersianNumber(index + 1) });
+            });
+        } else if (type === 'day') {
+            for (let i = 1; i <= 31; i++) {
+                const dayLabel = toPersianNumber(i);
+                options.push({ name: dayLabel, id: dayLabel });
+            }
+        } else {
+            throw new Error("Invalid type. Valid types are 'year', 'month', or 'day'.");
+        }
+
+        return options;
+    }
     return {
         backEndUrl,
         isDev,
@@ -233,6 +275,7 @@ export function useHelpers() {
         setAuthTokenHelpers,
         showSuccessToast,
         showErrorToast,
-        extractDate
+        extractDate,
+        getJalaliOptions
     };
 }
