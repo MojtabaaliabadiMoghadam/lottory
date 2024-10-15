@@ -10,7 +10,7 @@
         </span>
       </div>
       <button :disabled="disableButton"
-              class="bg-theme-primary-500 disabled:bg-theme-primary-100 font-bold w-[280px]
+              class="bg-theme-primary-500 disabled:bg-theme-primary-100 font-bold w-[280px] text-center
                h-[48px] text-white text-[20px] rounded-xl mb-5 mx-10 mt-3"
               :class="[disableButton ? 'cursor-not-allowed': 'md:hover:bg-theme-primary-700']"
       >

@@ -33,20 +33,17 @@ const {showErrorToast} = useHelpers()
 const store = useDataRegister()
 const router = useRouter()
 function dynamicBack() {
-  switch (route.path) {
-    case '/register/start':
       router.back()
-      break;
-  }
 }
 function dynamicNext(){
   if (route.path == '/register/start'){
-    console.log(store.is_married != null)
-    if (store.is_married != null){
+    if (store.formData.married_status != null){
       router.push('personal-info')
     }else{
       showErrorToast(' ! ابتدا وضعیت تاهل خود را مشخص کنید')
     }
+  }else if(route.path == '/register/personal-info'){
+    console.log(store.formData)
   }
 }
 </script>
