@@ -9,7 +9,7 @@
       </span>
       <register-status-bar/>
     </div>
-    <slot />
+    <slot/>
 
     <div class="flex items-center justify-between gap-10 pb-6 pt-10">
       <ui-kit-base-button @click-on="dynamicBack" label="صفحه قبل" theme="theme_secondary" class-button="md:!py-2">
@@ -17,7 +17,9 @@
           <span class="mdi mdi-chevron-right mdi-24px pe-4"/>
         </template>
       </ui-kit-base-button>
-      <ui-kit-base-button @click-on="dynamicNext" label="ثبت و ادامه" theme="theme_secondary" class-button="md:!py-2">
+      <ui-kit-base-button @click-on="dynamicNext"
+                          :label="route.path === '/register/verification' ? 'تکمیل خرید ' : 'ثبت و ادامه' "
+                          theme="theme_secondary" class-button="md:!py-2">
         <template #after_label>
           <span class="mdi mdi-chevron-left mdi-24px ps-4"/>
         </template>
@@ -32,18 +34,26 @@ const route = useRoute()
 const {showErrorToast} = useHelpers()
 const store = useDataRegister()
 const router = useRouter()
+
 function dynamicBack() {
-      router.back()
+  router.back()
 }
-function dynamicNext(){
-  if (route.path == '/register/start'){
-    if (store.formData.married_status != null){
-      router.push('personal-info')
-    }else{
-      showErrorToast(' ! ابتدا وضعیت تاهل خود را مشخص کنید')
-    }
-  }else if(route.path == '/register/personal-info'){
-    console.log(store.formData)
+
+function dynamicNext() {
+  switch (route.path) {
+    case '/register/start' :
+      if (store.formData.married_status != null) {
+        router.push('personal-info')
+      } else {
+        showErrorToast(' ! ابتدا وضعیت تاهل خود را مشخص کنید')
+      }
+      break;
+    case  '/register/personal-info' :
+      router.push('verification')
+      break;
+    case  '/register/verification' :
+      router.push('payment')
+      break;
   }
 }
 </script>
