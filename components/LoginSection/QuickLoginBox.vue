@@ -13,9 +13,9 @@
   </div>
 </template>
 <script setup lang="ts" >
-
 import {ref} from 'vue'
 import axios from 'axios'
+// import captcha from "~/stores/captcha";
 
 interface IPropsCard {
   title: string

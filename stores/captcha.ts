@@ -32,24 +32,24 @@ export default class Captcha {
         { question: "جمع چهار و سه چند می‌شود؟", answer: 7 }
     ];
 
-    getRandomQuestion(): Question {
+    public getRandomQuestion(): Question {
         const randomIndex = Math.floor(Math.random() * this.questions.length);
         return this.questions[randomIndex];
     }
 
     // دریافت پاسخ یک سوال خاص
-    getAnswerForQuestion(question: string): string | number | null {
+    public getAnswerForQuestion(question: string): string | number | null {
         const foundQuestion = this.questions.find(q => q.question === question);
         return foundQuestion ? foundQuestion.answer : null;
     }
 
     // بررسی صحیح بودن جواب
-    checkAnswer(question: string, answer: string | number): boolean {
+    public checkAnswer(question: string, answer: string | number): boolean {
         const correctAnswer = this.getAnswerForQuestion(question);
-        return correctAnswer !== null && correctAnswer === answer;
+        return correctAnswer !== null && correctAnswer == answer;
     }
 
-    multiFunction(question?: string, answer?: string | number): Question | string | number | boolean | null {
+    public multiFunction(question?: string, answer?: string | number): Question | string | number | boolean | null {
         // اگر هیچ ورودی‌ای نداشت، یک سوال تصادفی برمی‌گرداند
         if (!question && !answer) {
             return this.getRandomQuestion();
