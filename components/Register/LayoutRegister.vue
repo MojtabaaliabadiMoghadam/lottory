@@ -52,7 +52,11 @@ function dynamicNext() {
       router.push('verification')
       break;
     case  '/register/verification' :
-      router.push('payment')
+      if (store.acceptRule){
+        router.push('payment')
+      }else{
+        showErrorToast('لطفا قوانین هتل را بپذیرید')
+      }
       break;
   }
 }

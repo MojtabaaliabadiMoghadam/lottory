@@ -7,6 +7,7 @@ export const useDataRegister = defineStore('dataRegister', () => {
         {text:'پرداخت',key:'/register/payment'},
         {text:'تکمیل',key:'/register/completion'}
     ])
+    const acceptRule = ref<boolean>(false)
     const kindNotMarried = ref<'not-married' | 'absolute' | 'deceased-wife' | 'separation'>('not-married');
     const kindMarried = ref<'american-citizen' | 'not-american-citizen'>('not-american-citizen');
     const step = ref<string>('')
@@ -85,6 +86,7 @@ export const useDataRegister = defineStore('dataRegister', () => {
         step,
         kindMarried,
         formData,
-        birthDateData
+        birthDateData,
+        acceptRule
     }
 })

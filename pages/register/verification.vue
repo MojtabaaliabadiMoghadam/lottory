@@ -35,7 +35,7 @@
         </div>
         <div class="col-span-12 gap-2 flex items-center w-full justify-start">
           <label class="" for="">قوانین اینده سبز را میپذیرم</label>
-            <Checkbox v-model="checked" :binary="true" />
+            <Checkbox v-model="store.acceptRule" :binary="true" />
           <NuxtLink class="text-theme-primary-800 cursor-pointer select-none hover:text-theme-primary-600">(مشاهده قوانین)</NuxtLink>
         </div>
       </div>

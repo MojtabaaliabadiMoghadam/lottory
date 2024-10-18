@@ -29,6 +29,12 @@
           </div>
         </div>
         <div class="md:col-span-6 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
+          <label class="" for="">اخرین وضعیت تحصیلی :</label>
+          <div class="w-full flex gap-3 items-center">
+            <Select v-model="store.formData.education_level" :options="getJalaliOptions('day')" optionLabel="name" placeholder="" class="w-full" />
+          </div>
+        </div>
+        <div class="md:col-span-8 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
           <label class="" for="">تاریخ تولد شمسی :</label>
           <div class="w-full flex gap-3 items-center">
             <Select v-model="store.birthDateData.day" :options="getJalaliOptions('day')" optionLabel="name" placeholder="روز" class="w-1/4" />
@@ -48,18 +54,12 @@
             <Select v-model="store.formData.birth_city_id" :options="getJalaliOptions('day')" optionLabel="name" placeholder="" class="w-full" />
           </div>
         </div>
-        <div class="md:col-span-6 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
-          <label class="" for="">اخرین وضعیت تحصیلی :</label>
-          <div class="w-full flex gap-3 items-center">
-            <Select v-model="store.formData.education_level" :options="getJalaliOptions('day')" optionLabel="name" placeholder="" class="w-full" />
-          </div>
-        </div>
-        <div class="md:col-span-6 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
+        <div class=" col-span-12 gap-2 flex flex-col items-start w-full justify-center">
           <label class="" for="">عکس خود را بارگزاری کنید :</label>
           <div class="flex items-center w-full justify-between">
             <div>
               <label
-                  class="inline-block px-4 py-2 bg-blue-500 text-white cursor-pointer rounded-lg hover:bg-blue-600"
+                  class="flex px-4 py-2 bg-blue-500 text-white cursor-pointer rounded-lg hover:bg-blue-600"
                   for="fileInput"
               >
                 {{ store.formData.image ? 'تغییر تصویر ' : 'بارگزاری تصویر' }}

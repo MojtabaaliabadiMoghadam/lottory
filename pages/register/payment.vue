@@ -3,7 +3,7 @@
     <div class="flex flex-col w-full gap-4 items-center justify-center">
       <span class="md:text-[20px] text-[14px] font-bold text-theme-primary-950 py-3">پرداخت هزینه ثبت نام : </span>
       <span class="md:text-[20px] text-[14px] font-bold text-theme-primary-950 py-3">در صورت عدم پرداخت شفارش شما نهایی نمی شود ! </span>
-      <div class="flex flex-col  md:w-full md:px-[36rem] gap-8">
+      <div class="flex flex-col  w-full md:px-[36rem] gap-8">
         <div class="w-full flex items-center justify-center">
          <ui-kit-base-table
              :headers="headers"
