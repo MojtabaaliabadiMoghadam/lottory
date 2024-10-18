@@ -18,7 +18,7 @@
         </template>
       </ui-kit-base-button>
       <ui-kit-base-button @click-on="dynamicNext"
-                          :label="route.path === '/register/verification' ? 'تکمیل خرید ' : 'ثبت و ادامه' "
+                          :label="titleButtonComputed"
                           theme="theme_secondary" class-button="md:!py-2">
         <template #after_label>
           <span class="mdi mdi-chevron-left mdi-24px ps-4"/>
@@ -60,4 +60,14 @@ function dynamicNext() {
       break;
   }
 }
+const titleButtonComputed = computed(()=>{
+  switch (route.path) {
+    case  '/register/verification' :
+      return 'تکمیل خرید'
+    case  '/register/payment' :
+      return 'تکمیل خرید'
+    default :
+      return 'ثبت و ادامه'
+  }
+})
 </script>
