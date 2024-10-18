@@ -9,15 +9,17 @@
       </span>
       <register-status-bar/>
     </div>
-    <slot />
+    <slot/>
 
     <div class="flex items-center justify-between gap-10 pb-6 pt-10">
-      <ui-kit-base-button @click-on="dynamicBack" label="صفحه قبل" theme="theme_secondary" class-button="md:py-2">
+      <ui-kit-base-button @click-on="dynamicBack" label="صفحه قبل" theme="theme_secondary" class-button="md:!py-2">
         <template #before_label>
           <span class="mdi mdi-chevron-right mdi-24px pe-4"/>
         </template>
       </ui-kit-base-button>
-      <ui-kit-base-button @click-on="dynamicNext" label="ثبت و ادامه" theme="theme_secondary" class-button="md:py-2">
+      <ui-kit-base-button @click-on="dynamicNext"
+                          :label="route.path === '/register/verification' ? 'تکمیل خرید ' : 'ثبت و ادامه' "
+                          theme="theme_secondary" class-button="md:!py-2">
         <template #after_label>
           <span class="mdi mdi-chevron-left mdi-24px ps-4"/>
         </template>
@@ -29,24 +31,33 @@
 import {useDataRegister} from "~/stores/dataRegisterStore";
 
 const route = useRoute()
-const {showSuccessToast} = useHelpers()
+const {showErrorToast} = useHelpers()
 const store = useDataRegister()
 const router = useRouter()
+
 function dynamicBack() {
-  switch (route.path) {
-    case '/register/start':
-      router.back()
-      break;
-  }
+  router.back()
 }
-function dynamicNext(){
-  if (route.path == '/register/start'){
-    console.log(store.is_married != null)
-    if (store.is_married != null){
-      router.push('/personal-info')
-    }else{
-      showSuccessToast('sc')
-    }
+
+function dynamicNext() {
+  switch (route.path) {
+    case '/register/start' :
+      if (store.formData.married_status != null) {
+        router.push('personal-info')
+      } else {
+        showErrorToast(' ! ابتدا وضعیت تاهل خود را مشخص کنید')
+      }
+      break;
+    case  '/register/personal-info' :
+      router.push('verification')
+      break;
+    case  '/register/verification' :
+      if (store.acceptRule){
+        router.push('payment')
+      }else{
+        showErrorToast('لطفا قوانین هتل را بپذیرید')
+      }
+      break;
   }
 }
 </script>

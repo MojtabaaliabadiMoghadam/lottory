@@ -1,7 +1,7 @@
 import type {AxiosResponse} from 'axios';
 import axios from 'axios';
 // axios.defaults.withCredentials = true;
-import {toast} from 'vue3-toastify'
+
 
 axios.defaults.withCredentials = true;  // اصلاح با withCredentials
 
@@ -50,6 +50,7 @@ enum HttpMethods {
 
 // A collection of helper functions.
 export function useHelpers() {
+    const { $toast } = useNuxtApp()
     const runtimeConfig = useRuntimeConfig();
     const backEndUrl: string | null = runtimeConfig.public?.BACK_END_URL
     const isDev: boolean = process.env.NODE_ENV === 'development';
@@ -200,17 +201,64 @@ export function useHelpers() {
     }
 
 
-     function showSuccessToast(message: string) {
-        toast.success(message, {
-            autoClose: 2000,
-            position: toast.POSITION.TOP_CENTER,
+    const showErrorToast = (message: string) => {
+        $toast(message, {
+            type: 'error',
+            position: 'top-center',
+            duration: 3000,
+            theme: 'light',
         })
     }
-     function showErrorToast(message: string) {
-        toast.error(message, {
-            autoClose: 2000,
-            position: toast.POSITION.TOP_CENTER,
+
+    const showSuccessToast = (message: string) => {
+        $toast(message, {
+            type: 'success',
+            position: 'top-center',
+            duration: 3000,
+            theme: 'light',
         })
+    }
+    function toPersianNumber(num) {
+        const persianDigits = "۰۱۲۳۴۵۶۷۸۹";
+        return num.toString().replace(/[0-9]/g, (digit) => persianDigits[digit]);
+    }
+
+    function getJalaliOptions(type) {
+        const options = [];
+
+        if (type === 'year') {
+            const currentDate = new Date();
+            const gYear = currentDate.getFullYear();
+            const gMonth = currentDate.getMonth() + 1;
+            const gDay = currentDate.getDate();
+
+            // Approximate conversion from Gregorian to Jalali
+            const jalaliYear = gYear - 621 - ((gMonth < 3 || (gMonth === 3 && gDay < 21)) ? 1 : 0);
+
+            for (let i = jalaliYear; i > jalaliYear - 100; i--) {
+                const yearLabel = toPersianNumber(i);
+                options.push({ name: yearLabel, id: i });
+            }
+        } else if (type === 'month') {
+            const jalaliMonths = [
+                "فروردین", "اردیبهشت", "خرداد",
+                "تیر", "مرداد", "شهریور",
+                "مهر", "آبان", "آذر",
+                "دی", "بهمن", "اسفند"
+            ];
+            jalaliMonths.forEach((month, index) => {
+                options.push({ name: month, id: toPersianNumber(index + 1) });
+            });
+        } else if (type === 'day') {
+            for (let i = 1; i <= 31; i++) {
+                const dayLabel = toPersianNumber(i);
+                options.push({ name: dayLabel, id: dayLabel });
+            }
+        } else {
+            throw new Error("Invalid type. Valid types are 'year', 'month', or 'day'.");
+        }
+
+        return options;
     }
     return {
         backEndUrl,
@@ -227,6 +275,7 @@ export function useHelpers() {
         setAuthTokenHelpers,
         showSuccessToast,
         showErrorToast,
-        extractDate
+        extractDate,
+        getJalaliOptions
     };
 }

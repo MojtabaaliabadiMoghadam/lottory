@@ -1,14 +1,31 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import Aura from '@primevue/themes/aura';
 export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: true },
 
   css: [
       '~/assets/css/main.css',
-    '@mdi/font/css/materialdesignicons.min.css'
+    '@mdi/font/css/materialdesignicons.min.css',
   ],
 
-  modules: ['@pinia/nuxt'],
+  modules: [
+    '@pinia/nuxt',
+    '@primevue/nuxt-module'
+  ],
+  primevue: {
+    locale: {
+      rtl: true // فعال‌سازی حالت راست‌به‌چپ
+    },
+    options: {
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: 'light',
+        },
+      }
+    }
+  },
 
   runtimeConfig: {
     public: {
