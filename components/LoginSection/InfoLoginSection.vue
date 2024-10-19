@@ -8,10 +8,10 @@
         <span class="text-[29px] font-bold text-theme-primary-950 select-none text-center pb-6" style="word-spacing: 5px">
           ثبت نام لاتاری 1403 گرین کارت آمریکا
         </span>
-        <div class="flex flex-col md:flex-row gap-12">
-          <CardInfoLogin :disable-button="true" title_button="رزرو وقت سریع" title="ثبت نام سریع" :data="data_cards_2"/>
-          <QuickLoginBox title=" اطلاعات خود را وارد کنید ما در اسرع وقت با شما تماس میگیریم" title_button="همین حالا ثبت نام کنید" />
-          <CardInfoLogin :disable-button="true" title_button="ورود به ثبت نام" title="ثبت نام آنلاین" :data="data_cards"/>
+        <div class="grid grid-cols-12 w-full gap-6">
+          <CardInfoLogin class="md:col-span-4 col-span-12" :disable-button="true" title_button="رزرو وقت سریع" title="ثبت نام سریع" :data="data_cards_2"/>
+          <QuickLoginBox class="md:col-span-4 col-span-12" title=" اطلاعات خود را وارد کنید ما در اسرع وقت با شما تماس میگیریم" title_button="همین حالا ثبت نام کنید" />
+          <CardInfoLogin class="md:col-span-4 col-span-12" :disable-button="true" title_button="ورود به ثبت نام" title="ثبت نام آنلاین" :data="data_cards"/>
         </div>
         <div class="my-8">
           <ShortCutLoginSection :data_shortcuts="data_shortcuts" />

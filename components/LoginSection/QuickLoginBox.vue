@@ -1,14 +1,14 @@
 <template>
-  <div class=" md:mx-0 bg-white px-9 rounded-3xl flex flex-col justify-center items-center md:hover:border-4
+  <div class=" md:mx-0 bg-white  rounded-3xl flex flex-col justify-between items-center md:hover:border-4
    transition-all ease-in duration-150 md:hover:border-theme-primary-500 border-4 border-transparent">
-    <span class="py-3 px-8 text-center font-bold text-[20px]">{{ props.title }}</span>
+    <span class="py-3 px-4 text-center font-bold text-[20px]">{{ props.title }}</span>
     <div class="flex flex-col gap-14 items-center justify-center">
       <div class="w-full flex items-center justify-center">
         <ui-kit-input label="ایمیل:" class-input="w-72" v-model="email"/>
       </div>
       <ui-kit-input label="شماره موبایل:" class-input="w-72" v-model="mobile"/>
-      <div class="pb-7">
-        <ui-kit-base-button @click-on="submitData" :label="props.title_button"/>
+      <div class="py-4">
+        <ui-kit-base-button class-button="h-[20px] w-[150px]" :loading="loading" @click-on="submitData" :label="props.title_button"/>
       </div>
     </div>
   </div>
@@ -22,10 +22,11 @@ interface IPropsCard {
 }
 
 const props = withDefaults(defineProps<IPropsCard>(), {})
-
+const loading = ref<boolean>(false)
 const mobile = ref<string>('')
 const email = ref<string>('')
 async function submitData(){
+  loading.value = true
   const url = getUrl('lottery-register/quick-register');
   const {status,message} = await fetchData({
     url,
@@ -38,8 +39,10 @@ async function submitData(){
   console.log(message,'**********')
   if (status){
     showSuccessToast(message)
+    loading.value = false
   }else{
     showErrorToast(message)
+    loading.value = false
   }
 }
 
