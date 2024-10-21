@@ -38,12 +38,41 @@ const router = useRouter()
 function dynamicBack() {
   router.back()
 }
-
+function prepareDataMarriedStatus(){
+  if (store.formData.married_status == 0){
+    switch (store.kindNotMarried){
+      case 'not-married':
+        store.formData.married_status = 1
+      break;
+      case 'absolute':
+        store.formData.married_status = 2
+        break;
+      case 'deceased-wife':
+        store.formData.married_status = 3
+        break;
+      case 'separation':
+        store.formData.married_status = 3
+        break;
+    }
+  }else{
+    switch (store.kindMarried){
+      case 'american-citizen':
+        store.formData.married_status = 5
+        break;
+      case 'not-american-citizen':
+        store.formData.married_status = 4
+        break;
+    }
+  }
+}
 function dynamicNext() {
   switch (route.path) {
     case '/register/start' :
       if (store.formData.married_status != null) {
+        prepareDataMarriedStatus()
         router.push('personal-info')
+        console.log(store.formData.married_status,'***********************************')
+        localStorage.setItem('data_register',JSON.stringify(store?.formData))
       } else {
         showErrorToast(' ! ابتدا وضعیت تاهل خود را مشخص کنید')
       }

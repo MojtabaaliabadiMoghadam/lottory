@@ -4,9 +4,9 @@
     <span class="py-3 px-4 text-center font-bold text-[20px]">{{ props.title }}</span>
     <div class="flex flex-col gap-14 items-center justify-center">
       <div class="w-full flex items-center justify-center">
-        <ui-kit-input label="ایمیل:" class-input="w-72" v-model="email"/>
+        <ui-kit-input label="ایمیل:" class-input="w-60" v-model="email"/>
       </div>
-      <ui-kit-input label="شماره موبایل:" class-input="w-72" v-model="mobile"/>
+      <ui-kit-input label="شماره موبایل:" class-input="w-60" v-model="mobile"/>
       <div class="py-4">
         <ui-kit-base-button class-button="h-[20px] w-[150px]" :loading="loading" @click-on="submitData" :label="props.title_button"/>
       </div>

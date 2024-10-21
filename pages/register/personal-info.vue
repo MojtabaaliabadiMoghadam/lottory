@@ -15,7 +15,7 @@
         <div class="md:col-span-6 col-span-12">
           <ui-kit-input v-model="store.formData.last_name_english" class-input="w-full" label="نام خانوادگی (انگلیسی) :" />
         </div>
-        <div class="md:col-span-6 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
+        <div class="md:col-span-4 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
           <label class="" for="">جنسیت :</label>
           <div class="w-full flex gap-6 items-center">
             <div class="flex items-center gap-2">
@@ -28,12 +28,6 @@
             </div>
           </div>
         </div>
-        <div class="md:col-span-6 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
-          <label class="" for="">اخرین وضعیت تحصیلی :</label>
-          <div class="w-full flex gap-3 items-center">
-            <Select v-model="store.formData.education_level" :options="getJalaliOptions('day')" optionLabel="name" placeholder="" class="w-full" />
-          </div>
-        </div>
         <div class="md:col-span-8 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
           <label class="" for="">تاریخ تولد شمسی :</label>
           <div class="w-full flex gap-3 items-center">
@@ -42,19 +36,42 @@
             <Select v-model="store.birthDateData.year" :options="getJalaliOptions('year')" optionLabel="name" placeholder="سال" class="w-2/4" />
           </div>
         </div>
-        <div class="md:col-span-6 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
-          <label class="" for="">کشور محل تولد :</label>
+        <div class="md:col-span-6 col-span-12">
           <div class="w-full flex gap-3 items-center">
-            <Select v-model="store.formData.birth_country_id" :options="getJalaliOptions('day')" optionLabel="name" placeholder="" class="w-full" />
+            <ui-kit-base-select
+                :label="dataFormOptions.country.label"
+                :url="dataFormOptions.country.url"
+                :item-name="dataFormOptions.country.itemName"
+                fullWidth
+                v-model="handleSelected"
+                :label-name="dataFormOptions.country.nameLabel"
+                :value-name="dataFormOptions.country.nameValue"
+            />
           </div>
         </div>
-        <div class="md:col-span-6 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
-          <label class="" for="">شهر محل تولد :</label>
-          <div class="w-full flex gap-3 items-center">
-            <Select v-model="store.formData.birth_city_id" :options="getJalaliOptions('day')" optionLabel="name" placeholder="" class="w-full" />
-          </div>
+        <div class="md:col-span-6 col-span-12">
+          <ui-kit-base-select
+              :label="dataFormOptions.city.label"
+              :url="dataFormOptions.city.url"
+              :item-name="dataFormOptions.city.itemName"
+              fullWidth
+              v-model="handleSelected"
+              :label-name="dataFormOptions.city.nameLabel"
+              :value-name="dataFormOptions.city.nameValue"
+          />
         </div>
         <div class=" col-span-12 gap-2 flex flex-col items-start w-full justify-center">
+          <ui-kit-base-select
+              :label="dataFormOptions.lastEducation.label"
+              :url="dataFormOptions.lastEducation.url"
+              :item-name="dataFormOptions.lastEducation.itemName"
+              fullWidth
+              v-model="handleSelected"
+              :label-name="dataFormOptions.lastEducation.nameLabel"
+              :value-name="dataFormOptions.lastEducation.nameValue"
+          />
+        </div>
+        <div class="col-span-12 gap-2 flex flex-col items-center w-full justify-center">
           <label class="" for="">عکس خود را بارگزاری کنید :</label>
           <div class="flex items-center w-full justify-between">
             <div>
@@ -88,7 +105,7 @@ import placeHolderImage from '@/assets/images/placeholderimage.webp'
 import {useDataRegister} from "~/stores/dataRegisterStore";
 const {getJalaliOptions} = useHelpers()
 const store = useDataRegister()
-
+const handleSelected = ref()
 const handleFileUpload = (event: Event) => {
   const target = event.target as HTMLInputElement
   const file = target.files ? target.files[0] : null
@@ -97,6 +114,29 @@ const handleFileUpload = (event: Event) => {
     store.formData.image = URL.createObjectURL(file)
   }
 }
+const dataFormOptions = reactive({
+  city:{
+    label:"شهر محل تولد :",
+    url:"cities",
+    itemName:"cities",
+    nameLabel:"name",
+    nameValue:"id"
+  },
+  country:{
+    label:"کشور محل تولد :",
+    url:"countries",
+    itemName:"countries",
+    nameLabel:"name",
+    nameValue:"id"
+  },
+  lastEducation:{
+    label:"اخرین وضعیت تحصیلی :",
+    url:"education-levels",
+    itemName:"education_levels",
+    nameLabel:"key",
+    nameValue:"id"
+  }
+})
 </script>
 <style>
 .p-datepicker-panel {

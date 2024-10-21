@@ -1,6 +1,6 @@
 <template>
     <button @click="$emit('click-on')"
-            class="rounded-xl py-4 px-10  transition-all duration-200 ease-in text-nowrap
+            class="rounded-xl md:py-4 md:px-10 px-4 py-2 transition-all duration-200 ease-in text-nowrap
             text-center flex items-center justify-center "
             :class="[props.classButton,props.active ? active_button[props.theme] :'',theme_button[props.theme]
             ]"
@@ -32,7 +32,8 @@ const props = withDefaults(defineProps<IPropsData>(),{
 })
 const emit = defineEmits(['click-on'])
 const theme_button = {
-  theme_primary:'disabled:bg-theme-primary-100 disabled:text-gray-300 disabled:cursor-not-allowed cursor-pointer bg-theme-primary-300 text-theme-primary-950 hover:bg-theme-primary-700 hover:text-white font-bold',
+  theme_primary:'disabled:bg-theme-primary-100 disabled:text-gray-300 disabled:cursor-not-allowed cursor-pointer ' +
+      'bg-theme-primary-100 text-theme-primary-950 hover:bg-theme-primary-700 hover:text-white font-bold',
   theme_secondary:'bg-white text-theme-primary-950 ring-2 ring-theme-primary-700 hover:bg-theme-primary-700 ' +
       'hover:text-black hover:font-bold hover:ring-4 disabled:bg-theme-primary-100',
 }
