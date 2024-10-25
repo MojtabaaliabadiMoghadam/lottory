@@ -71,13 +71,13 @@ function dynamicNext() {
       if (store.formData.married_status != null) {
         prepareDataMarriedStatus()
         router.push('personal-info')
-        console.log(store.formData.married_status,'***********************************')
         localStorage.setItem('data_register',JSON.stringify(store?.formData))
       } else {
         showErrorToast(' ! ابتدا وضعیت تاهل خود را مشخص کنید')
       }
       break;
     case  '/register/personal-info' :
+      console.log(store.formData,'store.formData')
       router.push('verification')
       break;
     case  '/register/verification' :

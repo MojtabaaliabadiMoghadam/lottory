@@ -39,24 +39,34 @@ export const useDataRegister = defineStore('dataRegister', () => {
         education_level:string
     }
 
-    interface WifeInfo {
-        first_name_english: string;
-        last_name_english: string;
-        first_name_persian: string;
-        gender:'male'|'female';
-        last_name_persian: string;
-        birthdate: string; // Format: YYYY-MM-DD
-        education_level:string
-    }
-
     interface ChildInfo {
         first_name_english: string;
         last_name_english: string;
         first_name_persian: string;
-        gender:'male'|'female';
         last_name_persian: string;
-        birthdate: string; // Format: YYYY-MM-DD
-        education_level:string
+        birth_country_id: number;
+        birth_province_id: number;
+        birth_city_id: number;
+        birthdate: string; // تاریخ تولد به فرمت YYYY-MM-DD
+        nationality: string;
+        citizenship_country_id: number;
+        image: string; // آدرس یا مسیر تصویر
+        image_status: number; // وضعیت تصویر
+    }
+
+    interface WifeInfo {
+        first_name_english: string;
+        last_name_english: string;
+        first_name_persian: string;
+        last_name_persian: string;
+        birth_country_id: number;
+        birth_province_id: number;
+        birth_city_id: number;
+        birthdate: string; // تاریخ تولد به فرمت YYYY-MM-DD
+        nationality: string;
+        citizenship_country_id: number;
+        image: string; // آدرس یا مسیر تصویر
+        image_status: number; // وضعیت تصویر
     }
     const formData = ref<UserInfo>({
         mobile: '',
