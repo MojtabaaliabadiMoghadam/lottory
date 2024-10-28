@@ -1,6 +1,7 @@
 <template>
   <register-layout-register>
     <register-form-info-personal />
+    <register-form-info-wife />
   </register-layout-register>
 </template>
 <script setup lang="ts">

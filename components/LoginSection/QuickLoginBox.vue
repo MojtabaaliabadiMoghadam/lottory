@@ -36,7 +36,6 @@ async function submitData(){
       email:email.value
     }
   })
-  console.log(message,'**********')
   if (status){
     showSuccessToast(message)
     loading.value = false
