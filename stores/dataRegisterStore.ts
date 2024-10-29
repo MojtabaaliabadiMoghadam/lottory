@@ -11,6 +11,7 @@ export const useDataRegister = defineStore('dataRegister', () => {
     const kindNotMarried = ref<'not-married' | 'absolute' | 'deceased-wife' | 'separation'>('not-married');
     const kindMarried = ref<'american-citizen' | 'not-american-citizen'>('not-american-citizen');
     const step = ref<string>('')
+    const isMarried = ref<number>(0)
     const birthDateData = ref({
         day:'',
         month:'',
@@ -97,6 +98,7 @@ export const useDataRegister = defineStore('dataRegister', () => {
         kindMarried,
         formData,
         birthDateData,
-        acceptRule
+        acceptRule,
+        isMarried
     }
 })

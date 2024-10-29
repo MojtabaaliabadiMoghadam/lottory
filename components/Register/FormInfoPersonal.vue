@@ -14,7 +14,7 @@
       <div class="md:col-span-6 col-span-12">
         <ui-kit-input v-model="store.formData.last_name_english" class-input="w-full" label="نام خانوادگی (انگلیسی) :" />
       </div>
-      <div class="md:col-span-4 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
+      <div class="md:col-span-3 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
         <label class="" for="">جنسیت :</label>
         <div class="w-full flex gap-6 items-center">
           <div class="flex items-center gap-2">
@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-      <div class="md:col-span-8 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
+      <div class="md:col-span-9 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
         <label class="" for="">تاریخ تولد شمسی :</label>
         <div class="w-full flex gap-3 items-center">
           <Select v-model="store.birthDateData.day" :options="getJalaliOptions('day')" optionLabel="name" placeholder="روز" class="w-1/4" />

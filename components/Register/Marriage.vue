@@ -5,14 +5,14 @@
         وضعیت تاهل خود را مشخص کنید :
        </span>
       <div class="flex items-center justify-center py-4 w-full gap-5">
-        <ui-kit-base-button @click-on="store.formData.married_status = 0" :active="store.formData.married_status == 0"
+        <ui-kit-base-button @click-on="store.isMarried = 0" :active="store.isMarried == 0"
                             class-button="md:!px-20 px-12" label="مجرد"/>
-        <ui-kit-base-button @click-on="store.formData.married_status = 1" :active="store.formData.married_status == 1"
+        <ui-kit-base-button @click-on="store.isMarried = 1" :active="store.isMarried == 1"
                             class-button="md:!px-20 px-12" label="متاهل"/>
       </div>
     </div>
     <Transition mode="out-in">
-      <div v-if="store.formData.married_status == 0" class="flex flex-col items-center justify-center">
+      <div v-if="store.isMarried == 0" class="flex flex-col items-center justify-center">
       <span class="text-[20px] font-bold text-theme-primary-950 py-5">
         نوع تجرد خود را مشخص کنید :
        </span>
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div v-else>
-        <div v-if="store.formData.married_status == 1" class="flex flex-col items-center justify-center">
+        <div v-if="store.isMarried == 1" class="flex flex-col items-center justify-center">
           <span class="text-[20px] font-bold text-theme-primary-950 py-5">
             نوع شهروندی  همسر خود را مشخص کنید :
            </span>

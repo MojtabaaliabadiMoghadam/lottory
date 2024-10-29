@@ -39,7 +39,7 @@ function dynamicBack() {
   router.back()
 }
 function prepareDataMarriedStatus(){
-  if (store.formData.married_status == 0){
+  if (store.isMarried == 0){
     switch (store.kindNotMarried){
       case 'not-married':
         store.formData.married_status = 1
@@ -78,6 +78,8 @@ function dynamicNext() {
       break;
     case  '/register/personal-info' :
       console.log(store.formData,'store.formData')
+      localStorage.setItem('data_register',JSON.stringify(store?.formData))
+        // if (store.)
       router.push('verification')
       break;
     case  '/register/verification' :
