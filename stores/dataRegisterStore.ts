@@ -85,9 +85,9 @@ export const useDataRegister = defineStore('dataRegister', () => {
         image: '', // Base64 string, initially empty
         image_status: 0, // Default to not uploaded
         married_status: 0, // Default to single
-        wife_info: null, // No wife info when single
+        wife_info: {}, // No wife info when single
         children_count: 0, // Default to no children
-        children_info: null, // No children info when count is 0,
+        children_info: [], // No children info when count is 0,
         education_level:''
     });
     return {

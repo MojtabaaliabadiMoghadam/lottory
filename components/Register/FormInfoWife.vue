@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col w-full gap-4 items-center justify-center">
-    <span class="md:text-[20px] text-[14px] font-bold text-theme-primary-950 py-3">لطفا مشخصات خود را دقیق وارد کنید : </span>
+  <div class="flex flex-col w-full gap-4 items-center justify-center border-t-2 border-theme-primary-900">
+    <span class="md:text-[20px] text-[14px] font-bold text-theme-primary-950 py-3">لطفا همسر خود را وارد کنید : </span>
     <div class="grid grid-cols-12 md:w-full md:px-[36rem] gap-8">
       <div class="md:col-span-6 col-span-12">
         <ui-kit-input v-model="store.formData.wife_info.first_name_persian" class-input="w-full" label="نام :" />

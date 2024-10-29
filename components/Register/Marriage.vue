@@ -53,7 +53,7 @@
            تعداد فرزند تحت سرپرستی زیر 21 سال:
           </span>
         <ui-kit-base-select :label="label" :options="options"
-                            @update:selected="handleSelected"/>
+                            @update:selected="handleSelected" fullWidth/>
       </div>
     </Transition>
   </div>

@@ -53,7 +53,6 @@ const loadOptions = async () => {
         label: item[props?.labelName || 'name'],
         value: item[props?.valueName || 'id'],
       })) || [];
-      console.log(dynamicOptions.value,'***************')
     }
   }else{
     dynamicOptions.value = props.options
