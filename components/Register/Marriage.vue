@@ -53,7 +53,7 @@
            تعداد فرزند تحت سرپرستی زیر 21 سال:
           </span>
         <ui-kit-base-select :label="label" :options="options"
-                            @update:selected="handleSelected" fullWidth/>
+                            v-model="store.formData.children_count" fullWidth/>
       </div>
     </Transition>
   </div>
@@ -75,9 +75,6 @@ const options = ref([
   {label: '8', value: 8},
 ]);
 
-function handleSelected(valueEmit: any) {
-  store.formData.children_count = valueEmit
-}
 const showButtonFooterComputed = computed(()=>{
   if (store.formData.married_status != null){
     if (store.formData.married_status){

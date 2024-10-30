@@ -28,12 +28,7 @@
         </div>
       </div>
       <div class="md:col-span-9 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
-        <label class="" for="">تاریخ تولد شمسی :</label>
-        <div class="w-full flex gap-3 items-center">
-          <Select v-model="store.birthDateData.day" :options="getJalaliOptions('day')" optionLabel="name" placeholder="روز" class="w-1/4" />
-          <Select v-model="store.birthDateData.month" :options="getJalaliOptions('month')" optionLabel="name" placeholder="ماه" class="w-2/4" />
-          <Select v-model="store.birthDateData.year" :options="getJalaliOptions('year')" optionLabel="name" placeholder="سال" class="w-2/4" />
-        </div>
+        <ui-kit-base-date-picker-with-select v-model="store.formData.birthdate" label="تاریخ تولد شمسی :"/>
       </div>
       <div class="md:col-span-6 col-span-12">
         <div class="w-full flex gap-3 items-center">

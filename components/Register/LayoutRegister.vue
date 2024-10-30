@@ -77,7 +77,6 @@ function dynamicNext() {
       }
       break;
     case  '/register/personal-info' :
-      console.log(store.formData,'store.formData')
       localStorage.setItem('data_register',JSON.stringify(store?.formData))
         // if (store.)
       router.push('verification')
@@ -88,7 +87,7 @@ function dynamicNext() {
       }else{
         showErrorToast('لطفا قوانین هتل را بپذیرید')
       }
-      break;
+      break;``
   }
 }
 const titleButtonComputed = computed(()=>{

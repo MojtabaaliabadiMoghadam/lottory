@@ -236,8 +236,7 @@ export function useHelpers() {
             const jalaliYear = gYear - 621 - ((gMonth < 3 || (gMonth === 3 && gDay < 21)) ? 1 : 0);
 
             for (let i = jalaliYear; i > jalaliYear - 100; i--) {
-                const yearLabel = toPersianNumber(i);
-                options.push({ name: yearLabel, id: i });
+                options.push({ name: i, id: i });
             }
         } else if (type === 'month') {
             const jalaliMonths = [
@@ -247,12 +246,11 @@ export function useHelpers() {
                 "دی", "بهمن", "اسفند"
             ];
             jalaliMonths.forEach((month, index) => {
-                options.push({ name: month, id: toPersianNumber(index + 1) });
+                options.push({ name: month, id: index + 1 });
             });
         } else if (type === 'day') {
             for (let i = 1; i <= 31; i++) {
-                const dayLabel = toPersianNumber(i);
-                options.push({ name: dayLabel, id: dayLabel });
+                options.push({ name: i, id: i });
             }
         } else {
             throw new Error("Invalid type. Valid types are 'year', 'month', or 'day'.");

@@ -1,45 +1,44 @@
 <template>
   <div class="flex flex-col items-start w-full justify-center gap-2">
-    <label class="" :for="selectId">{{props.label}}</label>
+    <label :for="selectId">{{ props.label }}</label>
     <Select
         v-model="model"
         :options="dynamicOptions"
-        optionLabel="label"
-        :class="['w-full', { 'md:w-56': !fullWidth }]"
-        :id="selectId"
-        @change="emitSelectedOption"
+        :optionLabel="props.labelName"
+        :optionValue="props.valueName"
+    :class="['w-full', { 'md:w-56': !fullWidth }]"
+    :id="selectId"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, defineEmits, watch, onMounted } from 'vue';
 import Select from 'primevue/select';
-const {getUrl,fetchData} = useHelpers()
+const { getUrl, fetchData } = useHelpers();
+
 interface Option {
   label: string;
   value: string | number;
 }
+interface IProps {
+  url?: string;
+  options?: Option[];
+  placeholder?: string;
+  fullWidth?: boolean;
+  label?: string;
+  itemName?: string;
+  labelName?: string;
+  valueName?: string;
+}
+const props = withDefaults(defineProps<IProps>(),{
+  labelName: 'label',
+  valueName: 'value',
+})
 
-const props = defineProps<{
-  url?: string; // URL for fetching options
-  options?: Option[]; // Static options
-  placeholder?: string; // Placeholder text
-  fullWidth?: boolean; // Optionally make select box full width
-  label?:string;
-  itemName?:string
-  labelName?:string
-  valueName?:string
-}>();
-
-const emit = defineEmits(['update:selected']);
-
-// Data properties
-const model = ref(null);
-const dynamicOptions = ref<Option[]|any>([]);
+const model = defineModel(); // به عنوان model استفاده می‌شود
+const dynamicOptions = ref<Option[]>([]);
 const selectId = ref(`select-${Math.random().toString(36).substring(7)}`);
 
-// Load data from URL or use static options
 const loadOptions = async () => {
   if (props.url) {
     const url = getUrl(props.url);
@@ -48,32 +47,21 @@ const loadOptions = async () => {
       method: 'GET',
     });
     if (status === 200) {
-      // Optional chaining (?.) to safely access data[props.itemName]
       dynamicOptions.value = data?.[props?.itemName]?.map((item: any) => ({
-        label: item[props?.labelName || 'name'],
-        value: item[props?.valueName || 'id'],
+        [props.labelName || 'label']: item[props?.labelName || 'name'],
+        [props.valueName || 'value']: item[props?.valueName || 'id']
       })) || [];
     }
-  }else{
-    dynamicOptions.value = props.options
+  } else {
+    dynamicOptions.value = props.options || [];
   }
-}
-// Emit selected value
-const emitSelectedOption = () => {
-  emit('update:selected', model.value);
 };
 
-// Load options when the component is mounted
 onMounted(() => {
   loadOptions();
-});
-
-// Watch for changes in the model and emit the selected value
-watch(() => model.value, () => {
-  emitSelectedOption();
 });
 </script>
 
 <style scoped>
-/* Optionally, add custom styles here */
+/* Optional custom styles */
 </style>

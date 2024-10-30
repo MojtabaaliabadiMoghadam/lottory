@@ -40,14 +40,8 @@
 
       <!-- Birthdate (Jalali Date Selectors) -->
       <div class="md:col-span-9 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
-        <label>تاریخ تولد شمسی :</label>
-        <div class="w-full flex gap-3 items-center">
-          <Select v-model="store.formData.birthdate" :options="getJalaliOptions('day')" optionLabel="name" placeholder="روز" class="w-1/4" />
-          <Select v-model="store.formData.birthdate" :options="getJalaliOptions('month')" optionLabel="name" placeholder="ماه" class="w-2/4" />
-          <Select v-model="store.formData.birthdate" :options="getJalaliOptions('year')" optionLabel="name" placeholder="سال" class="w-2/4" />
-        </div>
+        <ui-kit-base-date-picker-with-select v-model="child.birthdate" label="تاریخ تولد شمسی :"/>
       </div>
-
       <!-- Country and City Select -->
       <div class="md:col-span-6 col-span-12">
         <ui-kit-base-select
@@ -146,7 +140,7 @@ const dataFormOptions = reactive({
 
 // Initialize child info array based on the number of children
 function initializeChildren() {
-  store.formData.children_info = Array.from({ length: store.formData.children_count.value }, () => ({
+  store.formData.children_info = Array.from({ length: store.formData.children_count }, () => ({
     first_name_english: '',
     last_name_english: '',
     first_name_persian: '',
