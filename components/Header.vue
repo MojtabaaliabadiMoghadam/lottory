@@ -10,7 +10,7 @@
             <li v-for="(header,index) in items_headers" :key="index">
               <NuxtLink :to="header.path"
                         @click="ChangeStatusShowMenu"
-                        :class="{'bg-theme-primary-500 !text-white' : route.path === header.path}"
+                        :class="{'bg-theme-primary-500 !text-white' : activeHeaderItem(header.path)}"
                         class="font-bold py-2 px-3 text-white transition-all ease-in duration-200
                          hover:bg-theme-primary-500 hover:text-white
                         border-0 p-0 h-[64px] min-w-[70px] flex justify-center items-center">
@@ -31,7 +31,7 @@
         <li v-for="(header,index) in items_headers" :key="index" class="w-full">
           <NuxtLink :to="header.path"
                     @click="ChangeStatusShowMenu"
-                    :class="{'bg-theme-primary-200 !text-theme-primary-900' : route.path === header.path}"
+                    :class="{'bg-theme-primary-200 !text-theme-primary-900' : activeHeaderItem(header.path)}"
                     class="font-bold py-2 px-3 text-white
                           border-0  min-w-[70px] flex justify-center items-center rounded-xl mx-2 mt-2">
             {{ header.title }}
@@ -55,6 +55,13 @@ const items_headers = reactive([
 const showMenu = ref<boolean>(false)
 function ChangeStatusShowMenu(){
   showMenu.value = !showMenu.value
+}
+function activeHeaderItem(path:string){
+  let resultPath = path.split('/')
+  let resultRoutePath = route.path.split('/')
+  console.log(resultPath[1],'resultPath')
+  console.log(resultRoutePath[1],'resultRoutePath')
+  return resultPath[1] == resultRoutePath[1]
 }
 </script>
 <style>
