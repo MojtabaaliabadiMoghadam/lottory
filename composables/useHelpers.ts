@@ -258,6 +258,7 @@ export function useHelpers() {
 
         return options;
     }
+    const isObjectEmpty = (obj:any) => Object.keys(obj).length === 0;
     return {
         backEndUrl,
         isDev,
@@ -274,6 +275,7 @@ export function useHelpers() {
         showSuccessToast,
         showErrorToast,
         extractDate,
-        getJalaliOptions
+        getJalaliOptions,
+        isObjectEmpty
     };
 }

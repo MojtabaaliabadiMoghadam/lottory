@@ -146,7 +146,7 @@ function initializeChildren() {
     last_name_persian: '',
     gender_status:'male',
     birth_country_id: 0,
-    birth_province_id: 0,
+    // birth_province_id: 0,
     birth_city_id: 0,
     birthdate: '',
     nationality: '',

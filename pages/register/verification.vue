@@ -87,6 +87,13 @@ const dataFormOptions = reactive({
     nameValue:"id"
   }
 })
+
+onMounted(() => {
+  const savedData = localStorage.getItem('data_register');
+  if (savedData) {
+    store.formData = JSON.parse(savedData);
+  }
+});
 </script>
 <style>
 .p-datepicker-panel {

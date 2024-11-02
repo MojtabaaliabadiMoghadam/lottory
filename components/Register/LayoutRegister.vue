@@ -32,7 +32,7 @@ import {useDataRegister} from "~/stores/dataRegisterStore";
 import {useDataGlobal} from "~/stores/globalStore";
 const storeDataFactor = useDataGlobal()
 const route = useRoute()
-const {showErrorToast,fetchData,getUrl} = useHelpers()
+const {showErrorToast,fetchData,getUrl,isObjectEmpty} = useHelpers()
 const store = useDataRegister()
 const router = useRouter()
 
@@ -70,13 +70,16 @@ function prepareDataMarriedStatus(){
 
 async function sendDataRegister() {
   let url  = getUrl('lottery-register')
-  const { status, message, data } = await fetchData({
+  const { status, message, data,errors } = await fetchData({
     url,
     method:'POST',
     data:store.formData
   })
-  if (status == 200) {
-    console.log(data)
+  if (isObjectEmpty(errors)) {
+    store.dataFactor = ''
+  }else{
+    store.formDataErrors = errors
+    await router.push('personal-info')
   }
 }
 
@@ -85,7 +88,7 @@ async function dynamicNext() {
     case '/register/start' :
       if (store.formData.married_status != null) {
         prepareDataMarriedStatus()
-        router.push('personal-info')
+        await router.push('personal-info')
         localStorage.setItem('data_register',JSON.stringify(store?.formData))
       } else {
         showErrorToast(' ! ابتدا وضعیت تاهل خود را مشخص کنید')
@@ -94,11 +97,12 @@ async function dynamicNext() {
     case  '/register/personal-info' :
       localStorage.setItem('data_register',JSON.stringify(store?.formData))
         // if (store.)
-      router.push('verification')
+      await router.push('verification')
       break;
     case  '/register/verification' :
       if (store.acceptRule){
         await sendDataRegister()
+        localStorage.setItem('data_register',JSON.stringify(store?.formData))
       }else{
         showErrorToast('لطفا قوانین هتل را بپذیرید')
       }

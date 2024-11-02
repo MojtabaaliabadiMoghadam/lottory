@@ -51,12 +51,12 @@ export const useDataRegister = defineStore('dataRegister', () => {
         first_name_persian: string;
         last_name_persian: string;
         birth_country_id: number;
-        birth_province_id: number;
+        // birth_province_id: number;
         gender_status:'male'|'female';
         birth_city_id: number;
         birthdate: string; // تاریخ تولد به فرمت YYYY-MM-DD
         nationality: string;
-        citizenship_country_id: number;
+        // citizenship_country_id: number;
         image: string; // آدرس یا مسیر تصویر
         image_status: number; // وضعیت تصویر
     }
@@ -67,12 +67,12 @@ export const useDataRegister = defineStore('dataRegister', () => {
         first_name_persian: string;
         last_name_persian: string;
         birth_country_id: number;
-        birth_province_id: number;
+        // birth_province_id: number;
         birth_city_id: number;
         gender_status:'male'|'female';
         birthdate: string; // تاریخ تولد به فرمت YYYY-MM-DD
         nationality: string;
-        citizenship_country_id: number;
+        // citizenship_country_id: number;
         image: string; // آدرس یا مسیر تصویر
         image_status: number; // وضعیت تصویر
     }
@@ -85,11 +85,11 @@ export const useDataRegister = defineStore('dataRegister', () => {
         postal_code: '',
         birth_country_id: 0,
         gender_status:'male',
-        birth_province_id: 0,
+        // birth_province_id: 0,
         birth_city_id: 0,
         birthdate: '', // Can use a default date if needed, e.g., '1990-01-01'
         nationality: '',
-        citizenship_country_id: 0,
+        // citizenship_country_id: 0,
         image: '', // Base64 string, initially empty
         image_status: 0, // Default to not uploaded
         married_status: 0, // Default to single
@@ -98,11 +98,13 @@ export const useDataRegister = defineStore('dataRegister', () => {
         children_info: [], // No children info when count is 0,
         education_level:'',
         residence_country_id:0,
-        residence_province:0,
+        residence_province:1,
         residence_city:0,
         current_address:'',
         email:''
     });
+    const formDataErrors = ref<Record<string, string[]>>({});
+    const dataFactor = ref()
     return {
         dataStatusBar,
         kindNotMarried,
@@ -111,6 +113,8 @@ export const useDataRegister = defineStore('dataRegister', () => {
         formData,
         birthDateData,
         acceptRule,
-        isMarried
+        isMarried,
+        formDataErrors,
+        dataFactor
     }
 })
