@@ -59,8 +59,6 @@ function ChangeStatusShowMenu(){
 function activeHeaderItem(path:string){
   let resultPath = path.split('/')
   let resultRoutePath = route.path.split('/')
-  console.log(resultPath[1],'resultPath')
-  console.log(resultRoutePath[1],'resultRoutePath')
   return resultPath[1] == resultRoutePath[1]
 }
 </script>

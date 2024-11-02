@@ -6,5 +6,7 @@
 </register-layout-register>
 </template>
 <script setup lang="ts">
+import {useDataRegister} from "~/stores/dataRegisterStore";
 
+const store = useDataRegister()
 </script>

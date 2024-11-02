@@ -1,7 +1,6 @@
 <template>
   <div class="flex flex-col w-full gap-4 items-center justify-center border-t-2 border-theme-primary-900">
     <span class="md:text-[20px] text-[14px] font-bold text-theme-primary-950 py-3">لطفا مشخصات فرزندان خود را وارد کنید :</span>
-
     <div v-for="(child, index) in store.formData.children_info" :key="index" class="grid grid-cols-12 md:w-full md:px-[36rem] gap-8">
       <div class="col-span-12 flex items-center justify-center">
         <span class="md:text-[20px] text-[14px] font-bold text-theme-primary-950 py-3"> مشخصات فرزند {{ index + 1 }}</span>
@@ -31,9 +30,9 @@
       <div class="md:col-span-3 col-span-12 gap-2 flex flex-col items-start w-full justify-center">
         <label>جنسیت :</label>
         <div class="w-full flex gap-6 items-center">
-          <RadioButton v-model="child.gender" inputId="genderFemale" name="gender" value="female" />
+          <RadioButton v-model="child.gender_status" inputId="genderFemale" name="gender" value="female" />
           <label for="genderFemale" class="font-bold">زن</label>
-          <RadioButton v-model="child.gender" inputId="genderMale" name="gender" value="male" />
+          <RadioButton v-model="child.gender_status" inputId="genderMale" name="gender" value="male" />
           <label for="genderMale" class="font-bold">مرد</label>
         </div>
       </div>
@@ -71,11 +70,11 @@
       <div class="col-span-12 gap-2 flex flex-col items-center w-full justify-center">
         <label>عکس خود را بارگزاری کنید :</label>
         <div class="flex items-center w-full justify-between">
-          <label class="flex px-4 py-2 bg-blue-500 text-white cursor-pointer rounded-lg hover:bg-blue-600" for="fileInput">
+          <label class="flex px-4 py-2 bg-blue-500 text-white cursor-pointer rounded-lg hover:bg-blue-600" :for="`child-${index}`">
             {{ child.image ? 'تغییر تصویر ' : 'بارگزاری تصویر' }}
           </label>
           <input
-              id="fileInput"
+              :id="`child-${index}`"
               type="file"
               class="hidden"
               @change="(event) => handleFileUpload(event, index)"
@@ -145,6 +144,7 @@ function initializeChildren() {
     last_name_english: '',
     first_name_persian: '',
     last_name_persian: '',
+    gender_status:'male',
     birth_country_id: 0,
     birth_province_id: 0,
     birth_city_id: 0,

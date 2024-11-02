@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 export const useDataGlobal = defineStore('data', () => {
-    const searchFieldInArticle = ref<string>('')
+    const dataFactorNotPayment = ref([])
     return {
-        searchFieldInArticle
+        dataFactorNotPayment
     }
 })

@@ -18,11 +18,11 @@
         <label class="" for="">جنسیت :</label>
         <div class="w-full flex gap-6 items-center">
           <div class="flex items-center gap-2">
-            <RadioButton v-model="store.formData.wife_info.gender" inputId="ingredient1" name="pizza" value="female" />
+            <RadioButton v-model="store.formData.wife_info.gender_status" inputId="ingredient1" name="pizza" value="female" />
             <label for="ingredient1" class=" font-bold">زن</label>
           </div>
           <div class="flex gap-2 items-center">
-            <RadioButton v-model="store.formData.wife_info.gender" inputId="ingredient2" name="pizza" value="male" />
+            <RadioButton v-model="store.formData.wife_info.gender_status" inputId="ingredient2" name="pizza" value="male" />
             <label for="ingredient2" class=" font-bold">مرد</label>
           </div>
         </div>
@@ -71,20 +71,20 @@
           <div>
             <label
                 class="flex px-4 py-2 bg-blue-500 text-white cursor-pointer rounded-lg hover:bg-blue-600"
-                for="fileInput"
+                for="fileInputWife"
             >
               {{ store.formData.wife_info.image ? 'تغییر تصویر ' : 'بارگزاری تصویر' }}
             </label>
           </div>
           <input
-              id="fileInput"
+              id="fileInputWife"
               type="file"
               class="hidden"
               @change="handleFileUpload"
               accept="image/*"
           />
           <div class="mt-4">
-            <img :src="store.formData.wife_info.image ? store.formData.wife_info.image : placeHolderImage" alt="Image Preview" class="w-32 h-32 object-cover rounded-md" />
+            <img :src="store.formData.wife_info.image ? store.formData.wife_info.image : placeHolderImage" alt="Image wife" class="w-32 h-32 object-cover rounded-md" />
           </div>
         </div>
       </div>
@@ -94,10 +94,8 @@
 <script setup lang="ts">
 import placeHolderImage from "assets/images/placeholderimage.webp";
 import RadioButton from "primevue/radiobutton";
-import Select from "primevue/select";
 import {useDataRegister} from "~/stores/dataRegisterStore";
 
-const {getJalaliOptions} = useHelpers()
 const store = useDataRegister()
 const handleFileUpload = (event: Event) => {
   const target = event.target as HTMLInputElement
@@ -105,6 +103,10 @@ const handleFileUpload = (event: Event) => {
 
   if (file) {
     store.formData.wife_info.image = URL.createObjectURL(file)
+    console.log(store.formData.wife_info.image)
+    store.formData.wife_info.image_status = 1
+  }else{
+    store.formData.wife_info.image_status = 0
   }
 }
 const dataFormOptions = reactive({

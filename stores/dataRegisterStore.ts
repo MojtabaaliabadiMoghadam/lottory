@@ -30,14 +30,19 @@ export const useDataRegister = defineStore('dataRegister', () => {
         birthdate: string; // Format: YYYY-MM-DD
         nationality: string;
         citizenship_country_id: number;
-        gender:'male'|'female';
+        gender_status:'male'|'female';
         image: string; // Base64 encoded image data
         image_status: number; // 0: Not uploaded, 1: Uploaded, etc.
         married_status: number; // 0: Single, 1: Married
-        wife_info: WifeInfo | null;
+        wife_info: WifeInfo;
         children_count: number;
         children_info: ChildInfo[] | null;
-        education_level:string
+        education_level:string,
+        "residence_country_id": number,
+        "residence_province": number,
+        "residence_city": number,
+        "current_address": string,
+        emailL: string
     }
 
     interface ChildInfo {
@@ -47,6 +52,7 @@ export const useDataRegister = defineStore('dataRegister', () => {
         last_name_persian: string;
         birth_country_id: number;
         birth_province_id: number;
+        gender_status:'male'|'female';
         birth_city_id: number;
         birthdate: string; // تاریخ تولد به فرمت YYYY-MM-DD
         nationality: string;
@@ -63,6 +69,7 @@ export const useDataRegister = defineStore('dataRegister', () => {
         birth_country_id: number;
         birth_province_id: number;
         birth_city_id: number;
+        gender_status:'male'|'female';
         birthdate: string; // تاریخ تولد به فرمت YYYY-MM-DD
         nationality: string;
         citizenship_country_id: number;
@@ -77,7 +84,7 @@ export const useDataRegister = defineStore('dataRegister', () => {
         last_name_persian: '',
         postal_code: '',
         birth_country_id: 0,
-        gender:'male',
+        gender_status:'male',
         birth_province_id: 0,
         birth_city_id: 0,
         birthdate: '', // Can use a default date if needed, e.g., '1990-01-01'
@@ -89,7 +96,12 @@ export const useDataRegister = defineStore('dataRegister', () => {
         wife_info: {}, // No wife info when single
         children_count: 0, // Default to no children
         children_info: [], // No children info when count is 0,
-        education_level:''
+        education_level:'',
+        residence_country_id:0,
+        residence_province:0,
+        residence_city:0,
+        current_address:'',
+        email:''
     });
     return {
         dataStatusBar,

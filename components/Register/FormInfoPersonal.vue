@@ -18,11 +18,11 @@
         <label class="" for="">جنسیت :</label>
         <div class="w-full flex gap-6 items-center">
           <div class="flex items-center gap-2">
-            <RadioButton v-model="store.formData.gender" inputId="ingredient1" name="pizza" value="female" />
+            <RadioButton v-model="store.formData.gender_status" inputId="ingredient1" name="pizza" value="female" />
             <label for="ingredient1" class=" font-bold">زن</label>
           </div>
           <div class="flex gap-2 items-center">
-            <RadioButton v-model="store.formData.gender" inputId="ingredient2" name="pizza" value="male" />
+            <RadioButton v-model="store.formData.gender_status" inputId="ingredient2" name="pizza" value="male" />
             <label for="ingredient2" class=" font-bold">مرد</label>
           </div>
         </div>
@@ -97,7 +97,6 @@ import RadioButton from "primevue/radiobutton";
 import Select from "primevue/select";
 import {useDataRegister} from "~/stores/dataRegisterStore";
 const store = useDataRegister()
-const {getJalaliOptions} = useHelpers()
 
 const handleFileUpload = (event: Event) => {
   const target = event.target as HTMLInputElement
@@ -105,6 +104,9 @@ const handleFileUpload = (event: Event) => {
 
   if (file) {
     store.formData.image = URL.createObjectURL(file)
+    store.formData.image_status = 1
+  }else {
+    store.formData.image_status = 0
   }
 }
 const dataFormOptions = reactive({

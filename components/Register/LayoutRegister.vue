@@ -29,15 +29,17 @@
 </template>
 <script setup lang="ts">
 import {useDataRegister} from "~/stores/dataRegisterStore";
-
+import {useDataGlobal} from "~/stores/globalStore";
+const storeDataFactor = useDataGlobal()
 const route = useRoute()
-const {showErrorToast} = useHelpers()
+const {showErrorToast,fetchData,getUrl} = useHelpers()
 const store = useDataRegister()
 const router = useRouter()
 
 function dynamicBack() {
   router.back()
 }
+
 function prepareDataMarriedStatus(){
   if (store.isMarried == 0){
     switch (store.kindNotMarried){
@@ -65,7 +67,20 @@ function prepareDataMarriedStatus(){
     }
   }
 }
-function dynamicNext() {
+
+async function sendDataRegister() {
+  let url  = getUrl('lottery-register')
+  const { status, message, data } = await fetchData({
+    url,
+    method:'POST',
+    data:store.formData
+  })
+  if (status == 200) {
+    console.log(data)
+  }
+}
+
+async function dynamicNext() {
   switch (route.path) {
     case '/register/start' :
       if (store.formData.married_status != null) {
@@ -83,11 +98,11 @@ function dynamicNext() {
       break;
     case  '/register/verification' :
       if (store.acceptRule){
-        router.push('payment')
+        await sendDataRegister()
       }else{
         showErrorToast('لطفا قوانین هتل را بپذیرید')
       }
-      break;``
+      break;
   }
 }
 const titleButtonComputed = computed(()=>{

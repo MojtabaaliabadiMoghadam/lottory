@@ -10,6 +10,12 @@
 <script setup lang="ts">
 import {useDataRegister} from "~/stores/dataRegisterStore";
 const store = useDataRegister()
+onMounted(() => {
+  const savedData = localStorage.getItem('data_register');
+  if (savedData) {
+    store.formData = JSON.parse(savedData);
+  }
+});
 </script>
 <style>
 .p-datepicker-panel {

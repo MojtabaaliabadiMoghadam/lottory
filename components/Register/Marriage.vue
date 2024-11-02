@@ -76,15 +76,11 @@ const options = ref([
 ]);
 
 const showButtonFooterComputed = computed(()=>{
-  if (store.formData.married_status != null){
-    if (store.formData.married_status){
+  if (store.isMarried != null){
+    if (store.isMarried){
       return  true
     }else{
-      if( store.kindNotMarried != 'not-married'){
-        return  true
-      }else{
-        return false
-      }
+      return store.kindNotMarried != 'not-married';
     }
   }else{
     return false
